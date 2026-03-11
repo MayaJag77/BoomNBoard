@@ -2,4 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'BoomNBoard/index.html')
+
+    context_dict = {"aboutmessage": "Welcome to BoomNBoard the best place to play your favourite sounds!"}
+
+    return render(request, 'BoomNBoard/index.html', context=context_dict)
