@@ -11,6 +11,7 @@ class User(models.Model):
 
 class Sounds(models.Model):
     soundID = models.CharField(primary_key=True, max_length=5, unique=True)
+    saved_sounds = models.ManyToManyField(User, through='SavedSounds')
     uploadedBy = models.ForeignKey(User, on_delete=models.CASCADE)
     soundFile = models.URLField()
     name = models.CharField(max_length=40)
