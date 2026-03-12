@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'styling/style.css' %}">
 
 <html>
     <head>
@@ -8,10 +9,11 @@
     </head>
 
     <body>
+        <div id="NavDiv">
         <nav class="navbar">
             <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
             <ul class="links">
-                <li class="LinkItem"><a href="index.html">Home</a></li>
+                <li class="LinkItem"><a href="home/">Home</a></li>
                 <li class="LinkItem"><a href="categories.html">Categories</a></li>
                 <li class="LinkItem"><a href="account.html">My Account</a></li>
                 <li class="LinkItem"><a href="help.html">Help</a></li>
@@ -19,5 +21,15 @@
                 <li class="LinkItem"><a href="signup.html">Sign Up</a></li>
             </ul>
         </nav>
+    </div>
+    <br>
+    <br>
+        <div id="AboutTextDiv">
+            <strong>{{ aboutmessage }}</strong>
+        </div>
+
+        <div id="TrendingSoundsDiv" style="background-color: lightgray;">
+           <u><h2 style="text-align: left;">Trending Sounds</h2></u> 
+        </div>
     </body>
 </html>

@@ -1,0 +1,64 @@
+body{
+    margin: 2%;
+    padding-top: 3%;
+}
+
+.navbar{
+    display: flex;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    padding: 1%;
+    margin: 2 auto;
+    width: 95%;
+    height: 12%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: white;
+}
+
+.links{
+    display: flex;
+    list-style-type: none;
+    margin-right: 52%;
+    padding: 0;
+}
+
+.LinkItem{
+    margin: 0 12%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+.LinkItem a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    
+}
+
+.LinkItem a:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+.Logo{
+    width: 12rem;
+}
+
+#AboutTextDiv, #TrendingSoundsDiv{
+    margin-top: 5%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    background-color: gray;
+    height: 10em;
+    width: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding:2%;
+}
+
