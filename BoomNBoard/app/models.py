@@ -9,8 +9,8 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
-class Sounds(models.Model):
-    savedSounds = models.ManyToManyField(User,through='SavedSounds', related_name="saved_sounds")
+class Sound(models.Model):
+    savedSound = models.ManyToManyField(User,through='SavedSound', related_name="saved_sounds")
     uploadedBy = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_sounds")
     soundID = models.CharField(primary_key=True, max_length=5, unique=True)
     soundFile = models.URLField()
@@ -21,9 +21,9 @@ class Sounds(models.Model):
     def __str__(self):
         return self.name
 
-class SavedSounds(models.Model):
+class SavedSound(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sound = models.ForeignKey(Sounds, on_delete=models.CASCADE)
+    sound = models.ForeignKey(Sound, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('user', 'sound')

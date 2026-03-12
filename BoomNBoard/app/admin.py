@@ -1,7 +1,7 @@
 from django.contrib import admin
-from app.models import Sounds, User, SavedSounds
+from app.models import Sound, User, SavedSound
 
 # Register your models here.
-admin.site.register(Sounds)
+admin.site.register(Sound)
 admin.site.register(User)
-admin.site.register(SavedSounds)
+admin.site.register(SavedSound)
