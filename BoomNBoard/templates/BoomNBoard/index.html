@@ -26,10 +26,13 @@
     <br>
         <div id="AboutTextDiv">
             <strong>{{ aboutmessage }}</strong>
+            <br>
+            <strong>{{ aboutmessagecontinued }}</strong>
         </div>
 
-        <div id="TrendingSoundsDiv" style="background-color: lightgray; height:15em; display:flex;">
+        <div id="TrendingSoundsDiv" style="background-color: lightgray; height:20em;">
            <u><h2 style="text-align: left;">Trending Sounds</h2></u> 
+        <div style="display:flex;">
            <div class="ButtonClass">
                 <p>#1</p>
                 <button style="border:none; background:none; cursor:pointer;" > 
@@ -61,6 +64,8 @@
                 <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"  height="300em" width="300em"/>
                 </button>
            </div>
+           </div>
+           <b><h1 style="text-align: center;">BoomNBoard</h2></b>
         </div>
     </body>
 </html>
