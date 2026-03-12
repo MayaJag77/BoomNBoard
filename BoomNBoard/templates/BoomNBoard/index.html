@@ -14,11 +14,11 @@
             <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
             <ul class="links">
                 <li class="LinkItem"><a href="home/">Home</a></li>
-                <li class="LinkItem"><a href="categories.html">Categories</a></li>
-                <li class="LinkItem"><a href="account.html">My Account</a></li>
-                <li class="LinkItem"><a href="help.html">Help</a></li>
-                <li class="LinkItem"><a href="login.html">Login</a></li>
-                <li class="LinkItem"><a href="signup.html">Sign Up</a></li>
+                <li class="LinkItem"><a href="categories/">Categories</a></li>
+                <li class="LinkItem"><a href="myaccount/">My Account</a></li>
+                <li class="LinkItem"><a href="help/">Help</a></li>
+                <li class="LinkItem"><a href="login/">Login</a></li>
+                <li class="LinkItem"><a href="signup/">Sign Up</a></li>
             </ul>
         </nav>
     </div>
@@ -28,8 +28,39 @@
             <strong>{{ aboutmessage }}</strong>
         </div>
 
-        <div id="TrendingSoundsDiv" style="background-color: lightgray;">
+        <div id="TrendingSoundsDiv" style="background-color: lightgray; height:15em; display:flex;">
            <u><h2 style="text-align: left;">Trending Sounds</h2></u> 
+           <div class="ButtonClass">
+                <p>#1</p>
+                <button style="border:none; background:none; cursor:pointer;" > 
+                    <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton" height="300em" width="300em"/>
+                </button>
+                 <br>
+           </div>
+           <div class="ButtonClass">
+                <p>#2</p>
+                <button style="border:none; background:none; cursor:pointer;"> 
+                 <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton"  height="300em" width="300em"/>
+                </button>
+           </div>
+           <div class="ButtonClass">
+                <p>#3</p>
+                <button style="border:none; background:none; cursor:pointer;"> 
+                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
+                 </button>  
+           </div>
+           <div class="ButtonClass">
+                <p>#4</p>
+                <button style="border:none; background:none; cursor:pointer;"> 
+                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
+                </button>
+           </div>
+           <div class="ButtonClass">
+                <p>#5</p>
+                <button style="border:none; background:none; cursor:pointer;"> 
+                <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"  height="300em" width="300em"/>
+                </button>
+           </div>
         </div>
     </body>
 </html>
