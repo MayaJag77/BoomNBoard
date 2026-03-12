@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'styling/style.css' %}">
 
 <html>
     <head>
         <title>BoomNBoard - Login</title>
     </head>
 
-    <body>
-        <nav class="navbar">
+     <body>
+        <div id="NavDiv">
+          <nav class="navbar">
             <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
             <ul class="links">
-                <li class="LinkItem"><a href="index.html">Home</a></li>
-                <li class="LinkItem"><a href="categories.html">Categories</a></li>
-                <li class="LinkItem"><a href="account.html">My Account</a></li>
-                <li class="LinkItem"><a href="help.html">Help</a></li>
-                <li class="LinkItem"><a href="login.html">Login</a></li>
-                <li class="LinkItem"><a href="signup.html">Sign Up</a></li>
+                <li class="LinkItem"><a href="/home/">Home</a></li>
+                <li class="LinkItem"><a href="/home/categories/">Categories</a></li>
+                <li class="LinkItem"><a href="/home/account/">My Account</a></li>
+                <li class="LinkItem"><a href="/home/help/">Help</a></li>
+                <li class="LinkItem"><a href="/home/login/">Login</a></li>
+                <li class="LinkItem"><a href="/home/signup/">Sign Up</a></li>
             </ul>
         </nav>
-
+    </div>
+    <br>
+    <br>
         <h2 class="LoginTitle">Login to existing account</h2>
 
         <div class="loginSection">
