@@ -62,3 +62,12 @@ body{
     padding:2%;
 }
 
+.ButtonClass{
+    display:flex;
+    margin-top:10%;
+    text-align: left;
+    margin-right:2%;
+}
+
+
+
