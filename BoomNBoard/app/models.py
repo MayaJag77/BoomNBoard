@@ -10,9 +10,9 @@ class User(models.Model):
         return self.username
 
 class Sounds(models.Model):
+    savedSounds = models.ManyToManyField(User,through='SavedSounds', related_name="saved_sounds")
+    uploadedBy = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_sounds")
     soundID = models.CharField(primary_key=True, max_length=5, unique=True)
-    saved_sounds = models.ManyToManyField(User, through='SavedSounds')
-    uploadedBy = models.ForeignKey(User, on_delete=models.CASCADE)
     soundFile = models.URLField()
     name = models.CharField(max_length=40)
     category = models.CharField(default=0, max_length=15)
@@ -20,7 +20,6 @@ class Sounds(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class SavedSounds(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
