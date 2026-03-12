@@ -12,26 +12,24 @@ body{
     margin: 2 auto;
     width: 95%;
     height: 12%;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
+    background-color: white;
 }
 
 .links{
     display: flex;
     list-style-type: none;
-    margin-right: 45%;
+    margin-right: 52%;
     padding: 0;
 }
 
 .LinkItem{
-    margin: 0 10%;
+    margin: 0 12%;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .LinkItem a{
@@ -50,10 +48,17 @@ body{
     width: 12rem;
 }
 
-#AboutTextDiv{
-    margin-top: 15%;
+#AboutTextDiv, #TrendingSoundsDiv{
+    margin-top: 5%;
     border-style: solid;
     border-width: 10px;
     border-color: black;
     background-color: gray;
+    height: 10em;
+    width: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding:2%;
 }
+

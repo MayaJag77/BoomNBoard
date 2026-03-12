@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <div>
+        <div id="NavDiv">
         <nav class="navbar">
             <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
             <ul class="links">
@@ -22,16 +22,14 @@
             </ul>
         </nav>
     </div>
-    
-        <br>
-        <br>
-
+    <br>
+    <br>
         <div id="AboutTextDiv">
             <strong>{{ aboutmessage }}</strong>
         </div>
 
-        <div id="TrendingSoundsDiv">
-
+        <div id="TrendingSoundsDiv" style="background-color: lightgray;">
+           <u><h2 style="text-align: left;">Trending Sounds</h2></u> 
         </div>
     </body>
 </html>
