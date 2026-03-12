@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'styling/style.css' %}">
+
+<html>
+    <head>
+        <title>BoomNBoard - Help Page</title>
+    </head>
+
+     <body>
+        <div id="NavDiv">
+          <nav class="navbar">
+            <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
+            <ul class="links">
+                <li class="LinkItem"><a href="/home/">Home</a></li>
+                <li class="LinkItem"><a href="/home/categories/">Categories</a></li>
+                <li class="LinkItem"><a href="/home/account/">My Account</a></li>
+                <li class="LinkItem"><a href="/home/help/">Help</a></li>
+                <li class="LinkItem"><a href="/home/login/">Login</a></li>
+                <li class="LinkItem"><a href="/home/signup/">Sign Up</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h2 class="HelpFAQ">Frequently asked questions</h2>
+
+    <div id="FAQDiv">
+        <p>
+            <strong>Question:</strong> how do I download sounds? 
+            <strong>Answer:</strong> Press the download icon beside the sound of your choice!
+        </p>
+    </div>
+
+    <h2 class="HelpEmail">Cant find what you're looking for?</h2>
+
+    <div id="HelpTextDiv">
+        <strong><p>Any questions? Please e-mail us at example@email.com</p></strong>
+    </div>
+
+    <div class="footer">BOOM N' BOARDS</div>
+
+    </body>
+</html>

@@ -12,3 +12,6 @@ def login(request):
 
 def signup(request):
     return render(request, 'BoomNBoard/signup.html')
+
+def help(request):
+    return render(request, 'BoomNBoard/help.html')
