@@ -23,6 +23,13 @@ def populate():
         password="testPassword"
     )
 
+    user3 = User.objects.create(
+        userID = "00003",
+        username="pterodactyl4",
+        email="iLovePterodactyl@test.com",
+        password="password12345"
+    )
+
     sound1 = Sound.objects.create(
         soundID="00001",
         soundFile="https://test.com/sounds/drum.mp3",
@@ -41,8 +48,38 @@ def populate():
         uploadedBy=user2
     )
 
+    sound3 = Sound.objects.create(
+        soundID="00003",
+        soundFile="https://test.com/sounds/yap.mp3",
+        name="Yapping",
+        category="Memes",
+        description="This is someone saying something.",
+        uploadedBy=user2
+    )
+
+    sound4 = Sound.objects.create(
+        soundID="00004",
+        soundFile="https://test.com/sounds/roar.mp3",
+        name="Dinosaur Roar",
+        category="Memes",
+        description="Roar",
+        uploadedBy=user3
+    )
+
+    sound5 = Sound.objects.create(
+        soundID="00005",
+        soundFile="https://test.com/sounds/woof.mp3",
+        name="woof",
+        category="Memes",
+        description="Dog woofing a lot.",
+        uploadedBy=user2
+    )
+
     SavedSound.objects.create(user=user1, sound=sound2)
     SavedSound.objects.create(user=user1, sound=sound1)
+    SavedSound.objects.create(user=user2, sound=sound3)
+    SavedSound.objects.create(user=user2, sound=sound4)
+    SavedSound.objects.create(user=user3, sound=sound5)
 
 if __name__ == "__main__":
     populate()
