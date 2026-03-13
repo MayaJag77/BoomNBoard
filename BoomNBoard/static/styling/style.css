@@ -86,6 +86,11 @@ button{
     margin-left: 3%; 
     margin-right:8%; 
     flex-direction: row;
+    
+}
+
+.SoundNameClass{
+    margin: 5%;
 }
 
 
