@@ -54,7 +54,7 @@ body{
     border-width: 10px;
     border-color: black;
     background-color: gray;
-    height: 7em;
+    height: 5em;
     width: 95%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
@@ -68,6 +68,20 @@ body{
     text-align: left;
     margin-right:2%;
 }
+
+button{
+    border:none; 
+    background:none; 
+    cursor:pointer;
+}
+
+.DownloadLikeDiv{
+    margin-left: 3%; 
+    margin-right:8%; 
+    display:flex;
+}
+
+
 
 
 
