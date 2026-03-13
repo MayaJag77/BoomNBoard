@@ -17,12 +17,13 @@
         <nav class="navbar">
             <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
             <ul class="links">
-                <li class="LinkItem"><a href="home/">Home</a></li>
-                <li class="LinkItem"><a href="/home/categories/">Categories</a></li>
-                <li class="LinkItem"><a href="/home/myaccount/">My Account</a></li>
-                <li class="LinkItem"><a href="/home/help/">Help</a></li>
-                <li class="LinkItem"><a href="/home/login/">Login</a></li>
-                <li class="LinkItem"><a href="/home/signup/">Sign Up</a></li>
+
+                <li class="LinkItem"><a href="{% url 'index' %}">Home</a></li>
+                <li class="LinkItem"><a href="{% url 'categories' %}">Categories</a></li>
+                <li class="LinkItem"><a href="{% url 'myaccount' %}">My Account</a></li>
+                <li class="LinkItem"><a href="{% url 'help' %}">Help</a>></li>
+                <li class="LinkItem"><a href="{% url 'login' %}">Login</a></li>
+                <li class="LinkItem"><a href="{% url 'signup' %}">Sign Up</a></li>
             </ul>
         </nav>
         </div>
