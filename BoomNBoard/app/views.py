@@ -5,7 +5,8 @@ from app.models import Sound
 def index(request):
 
     context_dict = {"aboutmessage": "Welcome to BoomNBoard the best place to play your favourite sounds!" ,
-                    "aboutmessagecontinued" : "Click on a button to begin or login to an account to view your favourites!"
+                    "aboutmessagecontinued" : "Click on a button to begin or login to an account to view your favourites!",
+                    "colourkeymessage" : "Red - Meme sounds    Blue - Ringtones    Green - Music"
                     }
     
     Trending_Sounds_List = Sound.objects.all()
@@ -22,3 +23,6 @@ def signup(request):
 
 def help(request):
     return render(request, 'BoomNBoard/help.html')
+
+def myaccount(request): 
+    return render(request, 'BoomNBoard/myaccount.html')
