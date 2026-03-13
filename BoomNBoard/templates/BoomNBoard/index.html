@@ -65,8 +65,14 @@
                 </button>
            </div>
            </div>
-           <br> <br>
-           <div style="display:flex;">
+           <div>
+                {% for sound in TrendingSounds %}
+                    <div class="TrendingSoundNamesClass">
+                         <h3>{{ sound.name }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+           <div style="display:flex;"> 
                 <div class="DownloadLikeDiv">
                 <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
                 <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
@@ -89,6 +95,7 @@
                 </div>
            </div>
            <b><h1 style="text-align: center;">BoomNBoard</h2></b>
+            
         </div>
     </body>
 </html>
