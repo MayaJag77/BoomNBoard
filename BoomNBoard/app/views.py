@@ -26,3 +26,6 @@ def help(request):
 
 def myaccount(request): 
     return render(request, 'BoomNBoard/myaccount.html')
+
+def categories(request): 
+    return render(request, 'BoomNBoard/categories.html')

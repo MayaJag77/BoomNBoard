@@ -9,3 +9,8 @@ function changeImage(ButtonElement) {
             img.src = WhiteHeart 
         }
 }
+
+function downloadSong(ButtonElement){
+    const clickedDownload = ButtonElement.id
+    alert(clickedDownload + "Has been clicked!")
+}
