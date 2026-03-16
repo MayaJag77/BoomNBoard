@@ -31,7 +31,10 @@
             <strong>{{ aboutmessagecontinued }}</strong>
             <br>
             <br>
-            <strong>{{colourkeymessage}}</strong>
+            {% for colour in colourkey %}
+                <span class="colourkeys {{ colour.colourkeycss }}">{{ colour.label }}</span>
+            {% endfor %}
+
         </div>
 
         <div id="TrendingSoundsDiv" style="background-color: lightgray; height:25em;">
