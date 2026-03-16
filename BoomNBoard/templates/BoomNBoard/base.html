@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'styling/style.css' %}">
+
+<html>
+    <head>
+        <title>BoomNBoard -
+        {% block title_block %}
+        {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'styling/style.css' %}">
+    </head>
+
+    <body>
+        <div id="NavDiv">
+        <nav class="navbar">
+            <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
+            <ul class="links">
+
+                <li class="LinkItem"><a href="{% url 'app:index' %}">Home</a></li>
+                <li class="LinkItem"><a href="{% url 'app:categories' %}">Categories</a></li>
+                <li class="LinkItem"><a href="{% url 'app:myaccount' %}">My Account</a></li>
+                <li class="LinkItem"><a href="{% url 'app:help' %}">Help</a>></li>
+                <li class="LinkItem"><a href="{% url 'app:login' %}">Login</a></li>
+                <li class="LinkItem"><a href="{% url 'app:signup' %}">Sign Up</a></li>
+            </ul>
+        </nav>
+        </div>
+
+        <br>
+        <br>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

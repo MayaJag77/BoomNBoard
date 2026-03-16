@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'styling/style.css' %}">
 
-<html>
+<link rel="stylesheet" href="{% static 'styling/style.css' %}">
+<script defer src="{% static 'javascript/javascript.js' %}"></script>
+
     <head>
         <title>BoomNBoard</title>
     </head>
@@ -28,6 +29,9 @@
             <strong>{{ aboutmessage }}</strong>
             <br>
             <strong>{{ aboutmessagecontinued }}</strong>
+            <br>
+            <br>
+            <strong>{{colourkeymessage}}</strong>
         </div>
 
         <div id="TrendingSoundsDiv" style="background-color: lightgray; height:25em;">
@@ -65,30 +69,42 @@
                 </button>
            </div>
            </div>
-           <br> <br>
-           <div style="display:flex;">
+           <div class="TrendingSoundNamesClass">
+                {% for sound in TrendingSounds %}
+                    <div class="SoundNameClass">
+                         <h3>{{ sound.name }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+           <div style="display:flex;"> 
                 <div class="DownloadLikeDiv">
-                <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
-                <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
+                <button id="DownloadButton1" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
+                <button id="LikeButton1" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" height="150em" width="70em" id="LikeImage1"></button>
                 </div>
                 <div class="DownloadLikeDiv">
-                <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
-                <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
+                <button id="DownloadButton2" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton2" height="150em" width="70em"></button>
+                <button id="LikeButton2" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="150em" width="70em" id="LikeImage2"></button>
                 </div>
                 <div class="DownloadLikeDiv">
-                <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
-                <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
+                <button  d="DownloadButton3"onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton3" height="150em" width="70em"></button>
+                <button id="LikeButton3" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="150em" width="70em" id="LikeImage3"></button>
                 </div>
                 <div class="DownloadLikeDiv">
-                <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
-                <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
+                <button id="DownloadButton4" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton4" height="150em" width="70em"></button>
+                <button id="LikeButton4" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="150em" width="70em" id="LikeImage4"></button>
                 </div>
                 <div class="DownloadLikeDiv">
-                <button><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="150em" width="70em"></button>
-                <button><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" id="LikeButton1" height="150em" width="70em"></button>
+                <button id="DownloadButton5" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton5" height="150em" width="70em"></button>
+                <button id="LikeButton5" onclick="changeImage(this)"> <img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="150em" width="70em" id="LikeImage5"></button>
                 </div>
            </div>
-           <b><h1 style="text-align: center;">BoomNBoard</h2></b>
+           <b><h1 style="text-align: center;">BoomNBoard</h1></b>      
         </div>
+
+         <script>
+        const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
+        const WhiteHeart = "{% static 'images/LikeButtonWhite.jpg' %}";
+    </script>
+
     </body>
 </html>

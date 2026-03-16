@@ -81,6 +81,14 @@ button{
     display:flex;
 }
 
+.TrendingSoundNamesClass{
+    display:flex;
+    margin-left: 4%; 
+    margin-right:8%; 
+    flex-direction: row;
+    gap: 13%;
+}
+
 /* Login Page CSS */
 
 .LoginTitle {
