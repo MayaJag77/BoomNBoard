@@ -19,6 +19,11 @@ body{
     background-color: white;
 }
 
+.colourkeys { font-weight: bold; color: #ffffff; padding: 3px 8px; border-radius: 4px;}
+.meme { background-color: rgb(255, 0, 0); }
+.ringtone { background-color: rgb(23, 78, 240); }
+.music { background-color: rgb(6, 156, 6); }
+
 .links{
     display: flex;
     list-style-type: none;

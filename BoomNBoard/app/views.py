@@ -6,7 +6,11 @@ def index(request):
 
     context_dict = {"aboutmessage": "Welcome to BoomNBoard the best place to play your favourite sounds!" ,
                     "aboutmessagecontinued" : "Click on a button to begin or login to an account to view your favourites!",
-                    "colourkeymessage" : "Red - Meme sounds    Blue - Ringtones    Green - Music"
+                    "colourkey": [
+                    {"colourkeycss": "meme",     "label": "Meme Sounds"},
+                    {"colourkeycss": "ringtone", "label": "Ringtones"},
+                    {"colourkeycss": "music",    "label": "Music"},
+                    ],
                     }
     
     Trending_Sounds_List = Sound.objects.all()
