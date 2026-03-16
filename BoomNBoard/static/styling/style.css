@@ -89,9 +89,109 @@ button{
     gap: 13%;
 }
 
+/* Login Page CSS */
+
+.LoginTitle {
+    text-align: center;
+    color: #e8450a;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    margin-bottom: 40px;
+}
+
+.loginSection {
+    display: flex;
+    flex-direction: column;
+    background-color: #d4d4d4;
+    width: 50%;
+    margin: 0 auto;
+    padding: 60px 80px;
+    border: 1px solid #aaa;
+}
+
+.loginSection label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.loginSection input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    height: 70px;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 28px;
+    margin-top: 20px;
+    background-color: white;
+    border: 3px solid black;
+    color: #e8450a;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
+/* Sign Up Page CSS */
 
+.SignUpTitle {
+    text-align: center;
+    color: #e8450a;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    margin-bottom: 40px;
+}
 
+.SignUpSection {
+    display: flex;
+    flex-direction: column;
+    background-color: #d4d4d4;
+    width: 50%;
+    margin: 0 auto;
+    padding: 60px 80px;
+    border: 1px solid #aaa;
+}
 
+.SignUpSection label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
 
+.SignUpSection input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    height: 70px;
+}
+
+.SignUpButton {
+    width: 100%;
+    padding: 28px;
+    margin-top: 20px;
+    background-color: white;
+    border: 3px solid black;
+    color: #e8450a;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
