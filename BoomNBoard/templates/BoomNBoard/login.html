@@ -5,7 +5,8 @@
 {% block content %}
     <h2 class="LoginTitle">Login to existing account</h2>
 
-    <div class="loginSection">
+    <div>
+    <form id="loginUser">
         <label>Username</label>
         <input type="text" name="Username" />
 
@@ -13,5 +14,6 @@
         <input type="password" name="Password" />
 
         <button class="loginButton">Login</button>
+    </form>
     </div>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from app.models import Sound
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
 
@@ -33,3 +35,22 @@ def myaccount(request):
 
 def categories(request): 
     return render(request, 'BoomNBoard/categories.html')
+
+@csrf_exempt
+def loginUser(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return JsonResponse({"success": True, "redirecting": "/"})
+        else:
+            return JsonResponse({"success": False, "error": "Invalid username or password"})
+
+def check_username(request):
+    username = request.GET.get("username")
+    exists = User.objects.filter(username=username).exists()
+    return JsonResponse({"exists": exists})
