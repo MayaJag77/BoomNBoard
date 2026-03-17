@@ -1,40 +1,17 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<link rel="stylesheet" href="{% static 'styling/style.css' %}">
+{% extends "BoomNBoard/base.html" %}
 
-<html>
-    <head>
-        <title>BoomNBoard - Login</title>
-    </head>
+{% block title_block %}Login{% endblock %}
 
-     <body>
-        <div id="NavDiv">
-          <nav class="navbar">
-            <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
-            <ul class="links">
-                <li class="LinkItem"><a href="/home/">Home</a></li>
-                <li class="LinkItem"><a href="/home/categories/">Categories</a></li>
-                <li class="LinkItem"><a href="/home/myaccount/">My Account</a></li>
-                <li class="LinkItem"><a href="/home/help/">Help</a></li>
-                <li class="LinkItem"><a href="/home/login/">Login</a></li>
-                <li class="LinkItem"><a href="/home/signup/">Sign Up</a></li>
-            </ul>
-        </nav>
+{% block content %}
+    <h2 class="LoginTitle">Login to existing account</h2>
+
+    <div class="loginSection">
+        <label>Username</label>
+        <input type="text" name="Username" />
+
+        <label>Password</label>
+        <input type="password" name="Password" />
+
+        <button class="loginButton">Login</button>
     </div>
-    <br>
-    <br>
-        <h2 class="LoginTitle">Login to existing account</h2>
-
-        <div class="loginSection">
-            <label>Username</label>
-            <input type="text" name="username" />
-
-            <label>Password</label>
-            <input type="password" name="password" />
-
-            <button class="loginButton">Login</button>
-        </div>
-        
-        <b><h1 style="text-align: center;">BoomNBoard</h1></b>
-    </body>
-</html>
+{% endblock %}
