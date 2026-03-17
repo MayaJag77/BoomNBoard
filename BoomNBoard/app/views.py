@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from app.models import Sound
+from app.models import Sound, User
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 
@@ -50,7 +50,7 @@ def loginUser(request):
         else:
             return JsonResponse({"success": False, "error": "Invalid username or password"})
 
-def check_username(request):
+def checkUsername(request):
     username = request.GET.get("username")
     exists = User.objects.filter(username=username).exists()
     return JsonResponse({"exists": exists})

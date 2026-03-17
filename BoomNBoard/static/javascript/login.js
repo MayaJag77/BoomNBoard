@@ -1,5 +1,6 @@
 $("#loginForm").on("submit", function(e) {
     e.preventDefault();
+    console.log($("#username").val(), $("#password").val());
 
     $.ajax({
         url: "/loginUser/",
@@ -10,6 +11,8 @@ $("#loginForm").on("submit", function(e) {
             csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
         },
         success: function(response) {
+            console.log(response);
+
             if (response.success) {
                 window.location.href = response.redirect_url;
             } else {
