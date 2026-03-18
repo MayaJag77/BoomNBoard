@@ -9,3 +9,16 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('help/', views.help, name = 'help')
 ]
+from django.urls import path
+from app import views
+
+app_name = 'app'
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('help/', views.help, name='help'),
+    path('categories/', views.categories, name='categories'),
+]
+

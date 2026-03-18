@@ -17,3 +17,6 @@ def signup(request):
 
 def help(request):
     return render(request, 'BoomNBoard/help.html')
+
+def categories(request):
+    return render(request, 'BoomNBoard/categories.html')
