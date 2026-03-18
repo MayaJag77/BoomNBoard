@@ -1,12 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from app.models import Sound, AppUser
-from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login
+from django.http import HttpResponse, JsonResponse
+from app.models import Sound, AppUser, SavedSound
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
-from django.urls import reverse
-
+from django.http import FileResponse, Http404
+import os, json
+from django.conf import settings
 
 def index(request):
 
@@ -25,29 +24,6 @@ def index(request):
 
     return render(request, 'BoomNBoard/index.html', context=context_dict)
 
-@csrf_exempt  # For testing only — use CSRF token in production
-def update_record(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-            record_id = data.get("name")
-            new_value = data.get("mp3")
-
-            if not record_id or new_value is None:
-                return JsonResponse({"error": "Missing required fields"}, status=400)
-
-            obj = Sound.objects.filter(id=SavedSound).first()
-            if not obj:
-                return JsonResponse({"error": "Record not found"}, status=404)
-
-            obj.my_field = new_value
-            obj.save()
-
-            return JsonResponse({"success": True, "updated_value": obj.my_field})
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON"}, status=400)
-    return JsonResponse({"error": "Invalid request method"}, status=405)
-
 def login(request):
     return render(request, 'BoomNBoard/login.html')
 
@@ -58,32 +34,49 @@ def help(request):
     return render(request, 'BoomNBoard/help.html')
 
 def myaccount(request): 
-    return render(request, 'BoomNBoard/myaccount.html')
+
+    favouriteSoundsList = SavedSound.objects.all()
+
+    context_dict = {}
+    context_dict["FavouriteSounds"] = favouriteSoundsList
+
+    return render(request, 'BoomNBoard/myaccount.html', context = context_dict)
+
+@csrf_exempt
+def save_fav(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            appuser = data.get("appuser")
+            sound = data.get("sound")
+
+            if not(appuser and sound):
+                return JsonResponse({"error": "Song name and mp3 are required"}, status=400)
+            
+            song = SavedSound.objects.create(appuser=appuser, sound=sound)
+            return JsonResponse({"message": "Song saved"})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"Error": "Invalid request method"}, status=405)
 
 def categories(request): 
     return render(request, 'BoomNBoard/categories.html')
 
+@csrf_exempt
 def loginUser(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
 
         user = authenticate(request, username=username, password=password)
-        
-        if user:
-            if user.is_active:
-                login(request)
-                return redirect(reverse('app:index'))
-            else:
-                return HttpResponse("Your Rango account is disabled.")
+
+        if user is not None:
+            login(request, user)
+            return JsonResponse({"success": True, "redirecting": "/"})
         else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            return JsonResponse({"success": False, "error": "Invalid username or password"})
 
-    else:
-        return render(request, 'rango/login.html')
-
-def checkUsername(request):
+def check_username(request):
     username = request.GET.get("username")
-    exists = User.objects.filter(username=username).exists()
-    return HttpResponse({"exists": exists})
+    exists = AppUser.objects.filter(username=username).exists()
+    return JsonResponse({"exists": exists})

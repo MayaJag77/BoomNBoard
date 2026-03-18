@@ -14,7 +14,8 @@ urlpatterns = [
     path('myaccount/', views.myaccount, name = 'myaccount'),
     path('categories/', views.categories, name='categories'),
     path('loginUser/', views.loginUser, name='loginUser'),
-    path('checkUsername/', views.checkUsername),
+    path('checkUsername/', views.check_username),
     path('login/', views.loginUser, name='login'),
-    path("update/", views.update_record, name="update_record"),
+    path("save-fav/", views.save_fav, name='save_fav'),
+    # path("update/", views.update_record, name="update_record"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
