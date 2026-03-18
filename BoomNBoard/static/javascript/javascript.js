@@ -10,7 +10,7 @@ function changeImage(ButtonElement) {
         }
 }
 
-function downloadSong(ButtonElement){
+async function downloadSong(ButtonElement){
     const clickedDownload = ButtonElement.getAttribute("data-name");
     console.log(clickedDownload)
      
@@ -32,6 +32,6 @@ function downloadSong(ButtonElement){
       } catch (error) {
         console.error("Download failed:", error);
       }
-    };
+};
 
 

@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from app.models import Sound
+from app.models import Sound, User
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
+from django.http import FileResponse, Http404
+import os
+from django.conf import settings
 
 def index(request):
 
