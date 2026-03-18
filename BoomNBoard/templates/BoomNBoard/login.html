@@ -3,17 +3,19 @@
 {% block title_block %}Login{% endblock %}
 
 {% block content %}
-    <h2 class="LoginTitle">Login to existing account</h2>
+    <div class="loginSection">
+    <form method="POST" id="loginForm" action="{% url 'app:loginUser' %}">
+        {% csrf_token %}
 
-    <div>
-    <form id="loginUser">
         <label>Username</label>
-        <input type="text" name="Username" />
+        <input type="text" id="username" name="username" />
 
         <label>Password</label>
-        <input type="password" name="Password" />
+        <input type="password" id="password" name="password" />
 
         <button class="loginButton">Login</button>
     </form>
+
+    <div id="error"></div>
     </div>
 {% endblock %}

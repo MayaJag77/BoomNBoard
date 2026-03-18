@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from app.models import SavedSound, Sound, User
-from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from app.models import Sound, AppUser
+from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
-from django.http import FileResponse, Http404
-import os
-from django.conf import settings
-import json
+from django.http import HttpResponse
+from django.urls import reverse
+
 
 def index(request):
 
@@ -63,21 +63,27 @@ def myaccount(request):
 def categories(request): 
     return render(request, 'BoomNBoard/categories.html')
 
-@csrf_exempt
 def loginUser(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
 
         user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return JsonResponse({"success": True, "redirecting": "/"})
+        
+        if user:
+            if user.is_active:
+                login(request)
+                return redirect(reverse('app:index'))
+            else:
+                return HttpResponse("Your Rango account is disabled.")
         else:
-            return JsonResponse({"success": False, "error": "Invalid username or password"})
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
 
-def check_username(request):
+    else:
+        return render(request, 'rango/login.html')
+
+def checkUsername(request):
     username = request.GET.get("username")
     exists = User.objects.filter(username=username).exists()
-    return JsonResponse({"exists": exists})
+    return HttpResponse({"exists": exists})
