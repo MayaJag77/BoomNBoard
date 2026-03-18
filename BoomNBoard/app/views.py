@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from app.models import Sound, AppUser
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.urls import reverse
@@ -52,20 +52,13 @@ def loginUser(request):
                 login(request)
                 return redirect(reverse('app:index'))
             else:
-                return JsonResponse({
-                    "success": False,
-                    "error": "Account is inactive"
-                })
+                return HttpResponse("Your Rango account is disabled.")
         else:
-            return JsonResponse({
-                "success": False,
-                "error": "Invalid username or password"
-            })
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
 
-    return JsonResponse({
-        "success": False,
-        "error": "Invalid request method"
-    }, status=405)
+    else:
+        return render(request, 'rango/login.html')
 
 def checkUsername(request):
     username = request.GET.get("username")
