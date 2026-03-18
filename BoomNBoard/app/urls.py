@@ -15,4 +15,5 @@ urlpatterns = [
     path('loginUser/', views.loginUser, name='loginUser'),
     path('checkUsername/', views.checkUsername),
     path('login/', views.loginUser, name='login'),
+    path("update/", views.update_record, name="update_record"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

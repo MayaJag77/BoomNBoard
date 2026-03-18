@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from app.models import Sound, AppUser
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.urls import reverse
@@ -25,6 +25,29 @@ def index(request):
     context_dict["TrendingSounds"] = Trending_Sounds_List
 
     return render(request, 'BoomNBoard/index.html', context=context_dict)
+
+@csrf_exempt  # For testing only — use CSRF token in production
+def update_record(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            record_id = data.get("name")
+            new_value = data.get("mp3")
+
+            if not record_id or new_value is None:
+                return JsonResponse({"error": "Missing required fields"}, status=400)
+
+            obj = Sound.objects.filter(id=SavedSound).first()
+            if not obj:
+                return JsonResponse({"error": "Record not found"}, status=404)
+
+            obj.my_field = new_value
+            obj.save()
+
+            return JsonResponse({"success": True, "updated_value": obj.my_field})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 def login(request):
     return render(request, 'BoomNBoard/login.html')
@@ -74,20 +97,13 @@ def loginUser(request):
                 login(request)
                 return redirect(reverse('app:index'))
             else:
-                return JsonResponse({
-                    "success": False,
-                    "error": "Account is inactive"
-                })
+                return HttpResponse("Your Rango account is disabled.")
         else:
-            return JsonResponse({
-                "success": False,
-                "error": "Invalid username or password"
-            })
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
 
-    return JsonResponse({
-        "success": False,
-        "error": "Invalid request method"
-    }, status=405)
+    else:
+        return render(request, 'rango/login.html')
 
 def checkUsername(request):
     username = request.GET.get("username")

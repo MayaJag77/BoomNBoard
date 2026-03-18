@@ -81,14 +81,14 @@ button{
 }
 
 .DownloadLikeDiv{
-    margin-left: 3%; 
+    margin-left: 4%; 
     margin-right:8%; 
     display:flex;
 }
 
 .TrendingSoundNamesClass{
     display:flex;
-    margin-left: 4%; 
+    margin-left: 7%; 
     margin-right:8%; 
     flex-direction: row;
     gap: 13%;
