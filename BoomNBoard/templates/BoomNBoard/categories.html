@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'styling/categories.css' %}">
+    <script defer src="{% static 'javascript/javascript.js' %}"></script>
     <title>BoomNBoard</title>
 </head>
 <body>
@@ -160,6 +161,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
+        const WhiteHeart = "{% static 'images/LikeButtonWhite.jpg' %}";
+    </script>
 
     <b><h1 style="text-align: center;">BoomNBoard</h1></b>
 
