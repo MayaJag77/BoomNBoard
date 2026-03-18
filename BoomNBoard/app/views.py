@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from app.models import Sound, User
+from app.models import SavedSound, Sound, User
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.http import FileResponse, Http404
 import os
 from django.conf import settings
+import json
 
 def index(request):
 
@@ -23,6 +24,29 @@ def index(request):
     context_dict["TrendingSounds"] = Trending_Sounds_List
 
     return render(request, 'BoomNBoard/index.html', context=context_dict)
+
+@csrf_exempt  # For testing only — use CSRF token in production
+def update_record(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            record_id = data.get("name")
+            new_value = data.get("mp3")
+
+            if not record_id or new_value is None:
+                return JsonResponse({"error": "Missing required fields"}, status=400)
+
+            obj = Sound.objects.filter(id=SavedSound).first()
+            if not obj:
+                return JsonResponse({"error": "Record not found"}, status=404)
+
+            obj.my_field = new_value
+            obj.save()
+
+            return JsonResponse({"success": True, "updated_value": obj.my_field})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 def login(request):
     return render(request, 'BoomNBoard/login.html')
