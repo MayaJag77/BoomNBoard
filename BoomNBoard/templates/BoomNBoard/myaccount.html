@@ -37,113 +37,65 @@
     <br>
 
         <div id="YourSoundsDiv" style="background-color: lightgray; height:20em;">
-           <u><h2 style="text-align: left;">Your Uploaded Sounds</h2></u> 
-        <div style="display:flex;">
-           <div class="ButtonClass">
-                <p>#1</p>
-                <button> 
-                    <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton" height="300em" width="300em"/>
-                </button>
-                 <br>
-           </div>
-           <div class="ButtonClass">
-                <p>#2</p>
-                <button> 
-                 <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
-           <div class="ButtonClass">
-                <p>#3</p>
-                <button> 
-                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
-                 </button>  
-           </div>
-           <div class="ButtonClass">
-                <p>#4</p>
-                <button> 
-                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
-           <div class="ButtonClass">
-                <p>#5</p>
-                <button> 
-                <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
-           </div>
-           <div class="UploadedSoundNamesClass">
-            {% for sound in UploadedSounds %}
-                <div class="SoundNameClass">
-                    <h3>{{ sound.name }}</h3>
+            <u><h2 style="text-align: left;">Your Uploaded Sounds</h2></u>
+            {% if UploadedSounds %}
+            <div style="display:flex;">
+                {% for sound in UploadedSounds %}
+                <div class="ButtonClass">
+                    <p>#{{ forloop.counter }}</p>
+                    <button>
+                        <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="SoundButton" class="SoundButton" height="300em" width="300em"/>
+                    </button>
+                    <br>
                 </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="UploadedSoundNamesClass">
+                {% for sound in UploadedSounds %}
+                    <div class="SoundNameClass">
+                        <h3>{{ sound.name }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p style="text-align: center; color: gray; margin-top: 2em; font-size: 1.2em;">No sounds uploaded yet!</p>
+            {% endif %}
         </div>
 
 
         <div id="FavouriteSoundsDiv" style="background-color: lightgray; height:20em;">
-           <u><h2 style="text-align: left;">Favourite Sounds</h2></u> 
-        <div style="display:flex;">
-           <div class="ButtonClass">
-                <p>#1</p>
-                <button> 
-                    <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton" height="300em" width="300em"/>
-                </button>
-                 <br>
-           </div>
-           <div class="ButtonClass">
-                <p>#2</p>
-                <button> 
-                 <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
-           <div class="ButtonClass">
-                <p>#3</p>
-                <button> 
-                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
-                 </button>  
-           </div>
-           <div class="ButtonClass">
-                <p>#4</p>
-                <button> 
-                 <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
-           <div class="ButtonClass">
-                <p>#5</p>
-                <button> 
-                <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"  height="300em" width="300em"/>
-                </button>
-           </div>
+           <u><h2 style="text-align: left;">Favourite Sounds</h2></u>
+           {% if FavouriteSounds %}
+           <div style="display:flex;">
+               {% for sound in FavouriteSounds %}
+               <div class="ButtonClass">
+                   <p>#{{ forloop.counter }}</p>
+                   <button>
+                       <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="SoundButton" class="SoundButton" height="300em" width="300em"/>
+                   </button>
+                   <br>
+                   <div class="FavouriteDownloadLikeDiv">
+                       <button id="DownloadButton{{ forloop.counter }}" onclick="downloadSong(this)">
+                           <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" height="75em" width="35em">
+                       </button>
+                       <button id="LikeButton{{ forloop.counter }}" onclick="changeImage(this)">
+                           <img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" height="75em" width="35em" id="LikeImage{{ forloop.counter }}">
+                       </button>
+                   </div>
+               </div>
+               {% endfor %}
            </div>
            <div class="FavouriteSoundNamesClass">
-                {% for sound in FavouriteSounds %}
-                    <div class="SoundNameClass">
-                         <h3>{{ sound.name }}</h3>
-                    </div>
-                {% endfor %}
-            </div>
-           <div style="display:flex;"> 
-                <div class="FavouriteDownloadLikeDiv">
-                <button id="DownloadButton1" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton1" height="75em" width="35em"></button>
-                <button id="LikeButton1" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like" height="75em" width="35em" id="LikeImage1"></button>
-                </div>
-                <div class="FavouriteDownloadLikeDiv">
-                <button id="DownloadButton2" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton2" height="75em" width="35em"></button>
-                <button id="LikeButton2" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="75em" width="35em" id="LikeImage2"></button>
-                </div>
-                <div class="FavouriteDownloadLikeDiv">
-                <button id="DownloadButton3"onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton3" height="75em" width="35em"></button>
-                <button id="LikeButton3" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="75em" width="35em" id="LikeImage3"></button>
-                </div>
-                <div class="FavouriteDownloadLikeDiv">
-                <button id="DownloadButton4" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton4" height="75em" width="35em"></button>
-                <button id="LikeButton4" onclick="changeImage(this)"><img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="75em" width="35em" id="LikeImage4"></button>
-                </div>
-                <div class="FavouriteDownloadLikeDiv">
-                <button id="DownloadButton5" onclick="downloadSong(this)"><img src="{% static 'images/DownloadButton.jpg' %}" alt="Download" id="DownloadButton5" height="75em" width="35em"></button>
-                <button id="LikeButton5" onclick="changeImage(this)"> <img src="{% static 'images/LikeButtonWhite.jpg' %}" alt="Like"  height="75em" width="35em" id="LikeImage5"></button>
-                </div>
+               {% for sound in FavouriteSounds %}
+                   <div class="SoundNameClass">
+                       <h3>{{ sound.name }}</h3>
+                   </div>
+               {% endfor %}
            </div>
+           {% else %}
+           <p style="text-align: center; color: gray; margin-top: 2em; font-size: 1.2em;">No sounds favourited yet!</p>
+           {% endif %}
+        </div>
 
     <script>
         const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
