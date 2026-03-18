@@ -1,46 +1,23 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<link rel="stylesheet" href="{% static 'styling/style.css' %}">
+{% extends "BoomNBoard/base.html" %}
 
-<html>
-    <head>
-        <title>BoomNBoard - Sign Up</title>
-    </head>
+{% block title_block %}Sign Up{% endblock %}
 
-    <body>
-        <div id="NavDiv">
-          <nav class="navbar">
-            <img src="{% static 'images/Media.jpg' %}" alt="Logo" class="Logo" />
-            <ul class="links">
-                <li class="LinkItem"><a href="/home/">Home</a></li>
-                <li class="LinkItem"><a href="/home/categories/">Categories</a></li>
-                <li class="LinkItem"><a href="/home/account/">My Account</a></li>
-                <li class="LinkItem"><a href="/home/help/">Help</a></li>
-                <li class="LinkItem"><a href="/home/login/">Login</a></li>
-                <li class="LinkItem"><a href="/home/signup/">Sign Up</a></li>
-            </ul>
-        </nav>
+{% block content %}
+    <h2 class="SignUpTitle">Register new Account</h2>
+
+    <div class="SignUpSection">
+        <label>Username</label>
+        <input type="text" name="Username" />
+
+        <label>Email Address</label>
+        <input type="text" name="EmailAddress" />
+
+        <label>Password</label>
+        <input type="password" name="Password" />
+
+        <label>Confirm Password</label>
+        <input type="password" name="ConfirmPassword" />
+
+        <button class="SignUpButton">Sign Up</button>
     </div>
-    <br>
-    <br>
-        <h2 class="SignUpTitle">Register new Account</h2>
-
-        <div class="SignUpSection">
-            <label>Username</label>
-            <input type="text" name="Username" />
-
-            <label>Email Address</label>
-            <input type="text" name="EmailAddress" />
-
-            <label>Password</label>
-            <input type="password" name="Password" />
-
-            <label>Confirm Password</label>
-            <input type="password" name="ConfirmPassword" />
-
-            <button class="SignUpButton">Sign Up</button>
-        </div>
-
-        <div class="footer">BOOM N' BOARDS</div>
-    </body>
-</html>
+{% endblock %}
