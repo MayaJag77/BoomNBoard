@@ -213,3 +213,107 @@ button{
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Help Page CSS */
+
+.HelpTitle {
+    text-align: center;
+    color: #e8450a;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    margin-bottom: 40px;
+}
+
+.FAQTitle, .HelpEmailTitle{
+    text-align: center;
+    color: #e8450a;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#FAQDiv{
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    background-color: #d4d4d4;
+    height: 15em;
+    width: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: left;
+    padding:2%;
+}
+
+#HelpTextDiv{
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    background-color: #d4d4d4;
+    height: 5em;
+    width: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: left;
+    padding: 2%;
+}
+
+/* myaccount Page CSS */
+
+.MyAccountTitle {
+    text-align: center;
+    color: #e8450a;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    margin-bottom: 40px;
+}
+
+.UploadSoundButton {
+    display:block;
+    text-align: center;
+    margin: auto;
+    width: 20%;
+    padding: 20px;
+    background-color: white;
+    border: 3px solid black;
+    color: #e8450a;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#FavouriteSoundsDiv{
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+    background-color: gray;
+    height: 5em;
+    width: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding:2%;
+}
+
+.FavouriteSoundNamesClass, .UploadedSoundNamesClass{
+    display:flex;
+    margin-left: 4%; 
+    margin-right:8%; 
+    flex-direction: row;
+    gap: 13%;
+}
+
+.FavouriteDownloadLikeDiv{
+    margin-left: 4.75%; 
+    margin-right: 9.25%; 
+    display:flex;
+}

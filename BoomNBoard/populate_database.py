@@ -43,7 +43,7 @@ def populate():
 
     sound1 = Sound.objects.create(
         soundID="00001",
-        soundFile="https://test.com/sounds/drum.mp3",
+        soundFile="media\audio\drums.mp3",
         name="Drum",
         category="Music",
         description="Loud Drums",
@@ -52,7 +52,7 @@ def populate():
 
     sound2 = Sound.objects.create(
         soundID="00002",
-        soundFile="https://test.com/sounds/meow.mp3",
+        soundFile="media\audio\cat.mp3",
         name="Meow",
         category="Memes",
         description="This is a cat meowing.",
@@ -61,7 +61,7 @@ def populate():
 
     sound3 = Sound.objects.create(
         soundID="00003",
-        soundFile="https://test.com/sounds/yap.mp3",
+        soundFile="media\audio\chatting.mp3",
         name="Yapping",
         category="Memes",
         description="This is someone saying something.",
@@ -70,7 +70,7 @@ def populate():
 
     sound4 = Sound.objects.create(
         soundID="00004",
-        soundFile="https://test.com/sounds/roar.mp3",
+        soundFile="media\audio\roar.mp3",
         name="Dinosaur Roar",
         category="Memes",
         description="Roar",
@@ -79,8 +79,8 @@ def populate():
 
     sound5 = Sound.objects.create(
         soundID="00005",
-        soundFile="https://test.com/sounds/woof.mp3",
-        name="Woof",
+        soundFile="media\audio\woof.mp3",
+        name="woof",
         category="Memes",
         description="Dog woofing a lot.",
         uploadedBy=user2
