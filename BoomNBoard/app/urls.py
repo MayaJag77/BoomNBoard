@@ -1,6 +1,8 @@
 from django.urls import path
 from app import views
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'app'
 
@@ -14,3 +16,5 @@ urlpatterns = [
     path('loginUser/', views.loginUser, name='loginUser'),
     path('checkUsername/', views.checkUsername),
 ]
+    path('login/', views.loginUser, name='login'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
