@@ -1,17 +1,13 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class User(models.Model):
-    userID = models.CharField(primary_key=True, max_length=128, unique=True)
-    username = models.CharField(max_length=128, unique=True)
-    password = models.CharField(max_length=128)
-    email = models.EmailField(max_length=128, unique=True)
-
+class AppUser(AbstractUser):
     def __str__(self):
         return self.username
 
 class Sound(models.Model):
-    savedSound = models.ManyToManyField(User,through='SavedSound', related_name="saved_sounds")
-    uploadedBy = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_sounds")
+    savedSound = models.ManyToManyField(AppUser,through='SavedSound', related_name="saved_sounds")
+    uploadedBy = models.ForeignKey(AppUser, on_delete=models.CASCADE, related_name="uploaded_sounds")
     soundID = models.CharField(primary_key=True, max_length=5, unique=True)
     soundFile = models.URLField()
     name = models.CharField(max_length=40)
@@ -22,11 +18,11 @@ class Sound(models.Model):
         return self.name
 
 class SavedSound(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    appuser = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     sound = models.ForeignKey(Sound, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('user', 'sound')
+        unique_together = ('appuser', 'sound')
 
     def __str__(self):
-        return f"{self.user.username} saved {self.sound.name}"
+        return f"{self.appuser.username} saved {self.sound.name}"

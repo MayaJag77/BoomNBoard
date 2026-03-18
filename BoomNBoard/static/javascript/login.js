@@ -1,8 +1,9 @@
 $("#loginForm").on("submit", function(e) {
     e.preventDefault();
+    console.log($("#username").val(), $("#password").val());
 
     $.ajax({
-        url: "/loginUser/",
+        url: "/home/loginUser/",
         type: "POST",
         data: {
             username: $("#username").val(),
