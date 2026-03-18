@@ -1,30 +1,41 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BoomNBoard.settings')
-
 import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BoomNBoard.settings')
 django.setup()
-from django.contrib.auth.models import User
-from app.models import User, Sound, SavedSound
+
+from app.models import Sound, SavedSound, AppUser
+
+def create_user(username, email, password):
+    user, created = AppUser.objects.get_or_create(
+        username=username,
+        email=email
+    )
+    
+    if created:
+        user.set_password(password)
+        user.save()
+    
+    return user
 
 def populate():
-    User.objects.all().delete()
+    AppUser.objects.all().delete()
+    Sound.objects.all().delete()
+    SavedSound.objects.all().delete()
 
-    user1 = User.objects.create(
-        userID = "00001",
+    user1 = create_user(
         username="karateDog7",
         email="alexKarateLover@test.com",
         password="testPassword"
     )
 
-    user2 = User.objects.create(
-        userID = "00002",
+    user2 = create_user(
         username="noobmaster69",
         email="NoobTester@test.com",
         password="testPassword"
     )
 
-    user3 = User.objects.create(
-        userID = "00003",
+    user3 = create_user(
         username="pterodactyl4",
         email="iLovePterodactyl@test.com",
         password="password12345"
@@ -69,17 +80,21 @@ def populate():
     sound5 = Sound.objects.create(
         soundID="00005",
         soundFile="https://test.com/sounds/woof.mp3",
-        name="woof",
+        name="Woof",
         category="Memes",
         description="Dog woofing a lot.",
         uploadedBy=user2
     )
 
-    SavedSound.objects.create(user=user1, sound=sound2)
-    SavedSound.objects.create(user=user1, sound=sound1)
-    SavedSound.objects.create(user=user2, sound=sound3)
-    SavedSound.objects.create(user=user2, sound=sound4)
-    SavedSound.objects.create(user=user3, sound=sound5)
+    # Saved sounds
+    SavedSound.objects.create(appuser=user1, sound=sound2)
+    SavedSound.objects.create(appuser=user1, sound=sound1)
+    SavedSound.objects.create(appuser=user2, sound=sound3)
+    SavedSound.objects.create(appuser=user2, sound=sound4)
+    SavedSound.objects.create(appuser=user3, sound=sound5)
+
+    print("Database populated successfully")
+
 
 if __name__ == "__main__":
     populate()
