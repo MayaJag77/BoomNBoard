@@ -100,11 +100,10 @@ def loginUser(request):
             if user.is_active:
                 login(request, user)
                 return redirect(reverse('app:myaccount'))
-            else:
-                return HttpResponse("Your account is disabled.")
         else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            print(f"Invalid username or password {username}, {password}")
+            messages.error(request, "Invalid username or password. Try again.")
+            return redirect('app:login')
     else:
         return render(request, 'BoomNBoard/login.html')
 
