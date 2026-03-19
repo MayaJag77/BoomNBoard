@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.conf import settings
+from .models import Sound, AppUser
 
 
 FAILURE_HEADER = "==================== TEST FAILURE OCCURRED ================================"
@@ -8,6 +9,8 @@ FAILURE_HEADER = "==================== TEST FAILURE OCCURRED ===================
 # Tests can be run with the command python manage.py test app.tests
 
 class BoomNBoardTests (TestCase):
+
+    # Tests for index.html
 
     def test_welcome_information(self):
         """
@@ -33,4 +36,64 @@ class BoomNBoardTests (TestCase):
 
         self.assertIn("RingButton-removebg-preview.png", html)
         self.assertIn("class=\"SoundButton\"", html)
+
+    def tests_audio_on_index(self):
+
+        """
+            Tests whether audio is available on the homepage
+        """
+        
+        response = self.client.get(reverse('index'))
+        html = response.content.decode()
+
+        self.assertIn("cat.mp3", html)
+        self.assertIn("type=\"audio/mpeg\"", html)
+
+    def tests_hearts_and_favourites(self):
+
+        """
+            Tests whether hearts appear on the homepage with ability to favourite
+        """
+        
+        response = self.client.get(reverse('index'))
+        html = response.content.decode()
+
+        self.assertIn("LikeButtonWhite.jpg", html)
+        self.assertIn("onclick=\"changeImage(this)", html)
+
+    def tests_downloads_on_index(self):
+
+        """
+            Tests whether download image appears and has functionality to download on homepage
+        """
+        
+        response = self.client.get(reverse('index'))
+        html = response.content.decode()
+
+        self.assertIn("DownloadButton.jpg", html)
+        self.assertIn("onclick=\"downloadSong(this)", html)
+    
+    def tests_sound_names_from_model(self):
+
+        self.user = AppUser.objects.create(
+            username="noobmaster69",
+            email="NoobTester@test.com",
+            password="testPassword"
+        )
+
+        self.sound = Sound.objects.create(
+              soundID="00002",
+              soundFile="media\audio\cat.mp3",
+              name="Meow",
+              category="Memes",
+              description="This is a cat meowing.",
+              uploadedBy=self.user
+        )
+
+        response = self.client.get(reverse('index'))
+
+        self.assertContains(response, self.sound.name)
+
+    # Tests for categories.html
+
 
