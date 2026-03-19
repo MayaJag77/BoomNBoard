@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.conf import settings
-from .models import Sound, AppUser
+from .models import Sound, AppUser, SavedSound
 
 
 FAILURE_HEADER = "==================== TEST FAILURE OCCURRED ================================"
@@ -189,6 +189,99 @@ class BoomNBoardTests (TestCase):
         html = response.content.decode()
 
         self.assertIn("LikeButtonWhite.jpg", html)
+
+    # Tests for myaccount.html
+
+    def test_username_displays(self):
+        """
+            Tests that if a user is logged in, their username displays
+        """
+
+        response = self.client.get(reverse('myaccount'))
+        html = response.content.decode()
+        self.assertIn('Hello, sign up to save sounds!', html)
+
+        user = AppUser.objects.create_user(
+          username="noobmaster69",
+          email="NoobTester@test.com",
+          password="testPassword"
+        )
+
+        self.client.login(username="noobmaster69", password="testPassword")
+
+        response = self.client.get(reverse('myaccount'))
+        html = response.content.decode()
+
+        self.assertIn('Hello, noobmaster69!', html)
+
+    def test_upload_sounds_if_logged_in(self):
+
+        """
+            Tests that users who are logged in have the ability to click and access files to upload
+        """
+        user = AppUser.objects.create_user(
+          username="noobmaster69",
+          email="NoobTester@test.com",
+          password="testPassword"
+        )
+
+        self.client.login(username="noobmaster69", password="testPassword")
+
+        response = self.client.get(reverse('myaccount'))
+        html = response.content.decode()
+
+        self.assertIn("<p>Upload Sound as MP3</p>", html)
+        self.assertIn(" onclick=\"document.getElementById('mp3upload').click()", html)
+
+    def tests_uploaded_Sounds(self):
+
+        """
+            Tests that users see the text "No sounds uploaded yet!" if they haven't uploaded a sound
+        """
+
+        response = self.client.get(reverse('myaccount'))
+        html = response.content.decode()
+        self.assertIn("No sounds uploaded yet!", html)
+
+    def test_favourite_sounds(self):
+
+        """
+            Tests that users can see sounds they have favourited in the favourite sounds section
+        """
+
+        self.user = AppUser.objects.create(
+            username="noobmaster69",
+            email="NoobTester@test.com",
+            password="testPassword"
+        )
+
+        self.sound = Sound.objects.create(
+        soundID="00001",
+        soundFile="media\audio\drums.mp3",
+        name="Drum",
+        category="Music",
+        description="Loud Drums",
+        uploadedBy=self.user
+    )   
+        
+        saved = SavedSound.objects.create(appuser=self.user, sound=self.sound)
+        
+        response = self.client.get(reverse('myaccount'))
+        html = response.content.decode()
+
+        self.assertIn("<h2 style=\"text-align: left;\">Favourite Sounds</h2>", html)
+        
+        self.assertIn("MusicButton-removebg-preview.png", html)
+
+
+
+        
+        
+
+
+
+        
+
 
 
     

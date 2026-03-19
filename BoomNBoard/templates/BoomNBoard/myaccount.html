@@ -12,12 +12,15 @@
             Hello, sign up to save sounds!
         {% endif %}</h1>
     <br>
-
+    
+    {% if user.is_authenticated %}
     <a class="UploadSoundButton" href="#" onclick="document.getElementById('mp3upload').click(); return false;">
         <p>Upload Sound as MP3</p>
     </a>
     <input type="file" id="mp3upload" accept=".mp3" style="display:none;">
-
+    {% else %}
+        <p>Log in to an account to upload sounds!</p>
+    {% endif %}
     <br>
 
         <div id="YourSoundsDiv" style="background-color: lightgray; height:20em;">
