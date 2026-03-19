@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{% static 'styling/style.css' %}">
         <script defer src="{% static 'javascript/javascript.js' %}"></script>
         <script>
-            function toggleLike(button) {
+            function changeImage(button) {
                 const img = button.querySelector('img');
                 if (img.src.includes('LikeButtonWhite.jpg')) {
                     img.src = img.src.replace('LikeButtonWhite.jpg', 'LikeButtonRed.jpg');

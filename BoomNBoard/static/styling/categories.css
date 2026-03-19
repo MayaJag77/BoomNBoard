@@ -52,8 +52,12 @@ body {
     border-color: black;
     width: 95%;
     padding: 0.5%;
+    padding-top: 0.1px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
@@ -98,6 +102,7 @@ button {
     height: 200px;
     transition: transform 0.1s ease;
 }
+
 .SoundButton:hover {
     transform: scale(1.08);
 }
@@ -109,8 +114,8 @@ button {
     margin-top: 6px;
 }
 .DownloadLikeDiv button img {
-    width: 32px;
-    height: 32px;
+    width: 60px;
+    height: 60px;
     border-radius: 4px;
 }
 .DownloadLikeDiv button:hover img {
