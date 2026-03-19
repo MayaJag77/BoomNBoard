@@ -47,6 +47,8 @@ def signup(request):
 
         user = AppUser.objects.create_user(username=username, email=email, password=password1)
         user.save()
+        login(request, user)
+
         return redirect('app:myaccount')
     return render(request, 'BoomNBoard/signup.html')
 
@@ -96,7 +98,7 @@ def loginUser(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect(reverse('app:index'))
+                return redirect(reverse('app:myaccount'))
             else:
                 return HttpResponse("Your account is disabled.")
         else:
@@ -115,18 +117,3 @@ def get_server_side_cookie(request, cookie, default_val=None):
     if not val:
         val = default_val
     return val
-    
-def visitor_cookie_handler(request):
-    visits = int(get_server_side_cookie(request,'visits','1'))
-    last_visit_cookie = get_server_side_cookie(request,
-    'last_visit',
-    str(datetime.now()))
-    last_visit_time = datetime.strptime(last_visit_cookie[:-7],
-    '%Y-%m-%d %H:%M:%S')
-    
-    if (datetime.now() - last_visit_time).days > 0:
-        visits = visits + 1
-        request.session['last_visit'] = str(datetime.now())
-    else:
-        request.session['last_visit'] = last_visit_cookie
-    request.session['visits'] = visits
