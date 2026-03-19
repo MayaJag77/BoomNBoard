@@ -152,6 +152,45 @@ class BoomNBoardTests (TestCase):
 
         self.assertIn("MemeButton-removebg-preview.png", html)
 
+    # Tests for help.html
+
+    def test_help_information(self):
+        """
+          Tests whether the help.html includes helpful information for users
+         """
+
+        required_question = "how do I download sounds?"
+        required_answer = "Press the download icon"
+    
+        index_response = self.client.get(reverse('help'))
+
+        self.assertEqual(index_response.status_code, 200)
+        self.assertContains(index_response, required_question)
+        self.assertContains(index_response, required_answer)
+
+    def test_help_email(self):
+        """
+          Tests whether the help.html includes an email for users with questions
+         """
+
+        required_email = "example@email.com"
+    
+        index_response = self.client.get(reverse('help'))
+
+        self.assertEqual(index_response.status_code, 200)
+        self.assertContains(index_response, required_email)
+
+    def test_help_icons(self):
+        """
+            Tests if the help.html page includes examples of icons for users to click
+        """
+
+        response = self.client.get(reverse('help'))
+        html = response.content.decode()
+
+        self.assertIn("LikeButtonWhite.jpg", html)
+
+
     
 
 
