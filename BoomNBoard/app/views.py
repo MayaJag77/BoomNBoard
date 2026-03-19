@@ -1,4 +1,4 @@
-from django.contrib import messages
+from pyexpat.errors import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
 from app.models import Sound, AppUser, SavedSound
@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+import json
 
 def index(request):
 
@@ -33,22 +34,18 @@ def signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
-        if not username or not email or not password1 or not password2:
-            messages.error(request, "All fields are required.")
+        if password1 != password2:
+            messages.error(request, "Passwords do not match")
             return redirect('app:signup')
 
-        if AppUser.objects.filter(email=email).exists():
-            messages.error(request, "Email already registered")
-            return redirect('app:login')
-        
         if AppUser.objects.filter(username=username).exists():
             messages.error(request, "Username already taken")
             return redirect('app:signup')
 
-        if password1 != password2:
-            messages.error(request, "Passwords do not match")
+        if AppUser.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered")
             return redirect('app:signup')
-        
+
         user = AppUser.objects.create_user(username=username, email=email, password=password1)
         user.save()
         login(request, user)
