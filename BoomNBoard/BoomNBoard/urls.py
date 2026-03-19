@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('categories/', views.categories, name='categories'),
     path('help/', views.help, name="help"),
+    path('myaccount/', views.myaccount, name = 'myaccount'),
 ]
