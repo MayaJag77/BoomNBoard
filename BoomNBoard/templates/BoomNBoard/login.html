@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="loginSection">
-    <form method="POST" id="loginForm" action="{% url 'app:loginUser' %}">
+    <form method="POST" id="loginForm" action="{% url 'app:login' %}">
         {% csrf_token %}
 
         <label>Username</label>

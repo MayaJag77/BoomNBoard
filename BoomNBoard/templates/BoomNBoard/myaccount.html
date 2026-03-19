@@ -5,8 +5,12 @@
 
  {% block content %}
 
-    <h1 class="MyAccountTitle">Hello, Your-Username-Here </h1>
-     <!-- to be changed to actual usernames -->
+    <h1 class="MyAccountTitle">
+        {% if user.is_authenticated %}
+            Hello, {{ user.username }}!
+        {% else %}
+            hey there partner!
+        {% endif %}</h1>
     <br>
 
     <a class="UploadSoundButton" href="#" onclick="document.getElementById('mp3upload').click(); return false;">
