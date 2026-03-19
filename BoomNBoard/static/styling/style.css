@@ -214,6 +214,20 @@ button{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.signup-error-message {
+    background-color: #ffe0e0;
+    color: #c0392b;
+    border: 2px solid #c0392b;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 0.3px;
+}
 
 /* Help Page CSS */
 

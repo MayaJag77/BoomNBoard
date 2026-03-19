@@ -5,6 +5,12 @@
 {% block content %}
     <h2 class="SignUpTitle">Register new Account</h2>
 
+    {% if messages %}
+            {% for message in messages %}
+                <div class="signup-error-message">{{ message }}</div>
+            {% endfor %}
+    {% endif %}
+
     <div class="SignUpSection">
         <form method="POST" action="{% url 'app:signup' %}">
             {% csrf_token %}
