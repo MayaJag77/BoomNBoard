@@ -4,9 +4,10 @@ from django.http import HttpResponse, JsonResponse
 from app.models import Sound, AppUser, SavedSound
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
-from django.http import FileResponse, Http404
-import os, json
+from django.urls import reverse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 def index(request):
 
@@ -24,9 +25,6 @@ def index(request):
     context_dict["TrendingSounds"] = Trending_Sounds_List
 
     return render(request, 'BoomNBoard/index.html', context=context_dict)
-
-def login(request):
-    return render(request, 'BoomNBoard/login.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -64,6 +62,10 @@ def myaccount(request):
 
     return render(request, 'BoomNBoard/myaccount.html', context = context_dict)
 
+# @login_required
+# def restricted(request):
+#     return render(request, 'BoomNBoard/restricted.html')
+
 @csrf_exempt
 def save_fav(request):
     if request.method == "POST":
@@ -84,21 +86,47 @@ def save_fav(request):
 def categories(request): 
     return render(request, 'BoomNBoard/categories.html')
 
-@csrf_exempt
 def loginUser(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return JsonResponse({"success": True, "redirecting": "/"})
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('app:index'))
+            else:
+                return HttpResponse("Your account is disabled.")
         else:
-            return JsonResponse({"success": False, "error": "Invalid username or password"})
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'BoomNBoard/login.html')
 
-def check_username(request):
-    username = request.GET.get("username")
-    exists = AppUser.objects.filter(username=username).exists()
-    return JsonResponse({"exists": exists})
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('app:index'))
+
+def get_server_side_cookie(request, cookie, default_val=None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+    
+def visitor_cookie_handler(request):
+    visits = int(get_server_side_cookie(request,'visits','1'))
+    last_visit_cookie = get_server_side_cookie(request,
+    'last_visit',
+    str(datetime.now()))
+    last_visit_time = datetime.strptime(last_visit_cookie[:-7],
+    '%Y-%m-%d %H:%M:%S')
+    
+    if (datetime.now() - last_visit_time).days > 0:
+        visits = visits + 1
+        request.session['last_visit'] = str(datetime.now())
+    else:
+        request.session['last_visit'] = last_visit_cookie
+    request.session['visits'] = visits
