@@ -66,3 +66,12 @@ function playSound(audioId) {
         audio.currentTime = 0;
     }
 }
+
+function toggleLike(button) {
+    const img = button.querySelector('img');
+    if (img.src.includes('LikeButtonWhite.jpg')) {
+        img.src = img.src.replace('LikeButtonWhite.jpg', 'LikeButtonRed.jpg');
+    } else {
+        img.src = img.src.replace('LikeButtonRed.jpg', 'LikeButtonWhite.jpg');
+    }
+}
