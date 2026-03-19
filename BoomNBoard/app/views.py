@@ -44,7 +44,7 @@ def signup(request):
 
         if AppUser.objects.filter(email=email).exists():
             messages.error(request, "Email already registered")
-            return redirect('app:signup')
+            return redirect('app:login')
 
         user = AppUser.objects.create_user(username=username, email=email, password=password1)
         user.save()

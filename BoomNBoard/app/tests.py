@@ -287,3 +287,40 @@ class BoomNBoardTests (TestCase):
     
 
 
+
+
+    # Tests for signup.html
+
+    # Tests for signup.html
+
+    def test_signup_page_loads(self):
+        """Signup page should load successfully"""
+        response = self.client.get(reverse('app:signup'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'BoomNBoard/signup.html')
+
+    def test_successful_signup(self):
+        """A new user can sign up and is redirected to myaccount"""
+        response = self.client.post(reverse('app:signup'), {
+            'username': 'newuser',
+            'email': 'newuser@example.com',
+            'password1': 'securepass123',
+            'password2': 'securepass123',
+        })
+        self.assertRedirects(response, reverse('app:myaccount'))
+        self.assertTrue(AppUser.objects.filter(username='newuser').exists())
+
+    def test_duplicate_email_redirects_to_login(self):
+        """User is redirected to login when email is already registered"""
+        AppUser.objects.create_user(
+            username='existinguser',
+            email='existing@example.com',
+            password='testpass123'
+        )
+        response = self.client.post(reverse('app:signup'), {
+            'username': 'newuser',
+            'email': 'existing@example.com',
+            'password1': 'securepass123',
+            'password2': 'securepass123',
+        })
+        self.assertRedirects(response, reverse('app:login'))
