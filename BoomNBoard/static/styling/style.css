@@ -3,7 +3,7 @@ body{
     padding-top: 3%;
 }
 
-.navbar{
+/* .navbar{
     display: flex;
     border-style: solid;
     border-width: 10px;
@@ -17,6 +17,17 @@ body{
     right: 0;
     z-index: 9999;
     background-color: white;
+} */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: 10px solid black;
+    width: 95%;
+    margin: 20px auto;
+    justify-content: space-between;
+    background-color: white;
 }
 
 .colourkeys { font-weight: bold; color: #ffffff; padding: 3px 8px; border-radius: 4px;}
@@ -24,17 +35,31 @@ body{
 .ringtone { background-color: rgb(23, 78, 240); }
 .music { background-color: rgb(6, 156, 6); }
 
-.links{
+/* .links{
     display: flex;
     list-style-type: none;
     margin-right: 52%;
     padding: 0;
+} */
+
+.links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-.LinkItem{
+/* .LinkItem{
     margin: 0 12%;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 40px;
+} */
+
+.LinkItem {
+    font-size: 2rem;
+    white-space: nowrap;
 }
 
 .LinkItem a{
@@ -49,8 +74,11 @@ body{
     color: blue;
 }
 
-.Logo{
-    width: 12rem;
+.Logo {
+    width: 8vw;
+    min-width: 80px;
+    max-width: 180px;
+    height: auto;
 }
 
 #AboutTextDiv, #TrendingSoundsDiv{
