@@ -15,14 +15,14 @@
             <div style="display:flex; flex-wrap:wrap;">
                 <div class="ButtonClass">
                     <p>Aaaahhhh</p>
-                    <button onclick="playSound('audio_meme1')">
+                    <button onclick="playSound('audio_meme16')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme1">
+                    <audio id="audio_meme6">
                         <source src="{% static 'audio/memes/Aaaahhhh.mp3' %}" type="audio/mpeg">
                     </audio>
-                    <div class="DownloadLikeDiv">
-                        <button>
+                    <div class="DownloadLikeDiv" >
+                        <button id="DownloadButton6" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -32,14 +32,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Among Us</p>
-                    <button onclick="playSound('audio_meme2')">
+                    <button onclick="playSound('audio_meme7')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme2">
+                    <audio id="audio_meme7">
                         <source src="{% static 'audio/memes/AmongUs.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton7" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -49,14 +49,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Baby Crying</p>
-                    <button onclick="playSound('audio_meme3')">
+                    <button onclick="playSound('audio_meme8')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme3">
+                    <audio id="audio_meme8">
                         <source src="{% static 'audio/memes/BabyCrying.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton8" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -66,14 +66,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Bing Chilling</p>
-                    <button onclick="playSound('audio_meme4')">
+                    <button onclick="playSound('audio_meme9')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme4">
+                    <audio id="audio_meme9">
                         <source src="{% static 'audio/memes/BingChilling.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton9" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -83,14 +83,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Bruh</p>
-                    <button onclick="playSound('audio_meme5')">
+                    <button onclick="playSound('audio_meme10')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme5">
+                    <audio id="audio_meme10">
                         <source src="{% static 'audio/memes/Bruh.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton10" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -100,14 +100,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Dramatic Fart</p>
-                    <button onclick="playSound('audio_meme6')">
+                    <button onclick="playSound('audio_meme11')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme6">
+                    <audio id="audio_meme11">
                         <source src="{% static 'audio/memes/DramaticFart.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton11" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -117,14 +117,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Goofy Sounds</p>
-                    <button onclick="playSound('audio_meme7')">
+                    <button onclick="playSound('audio_meme12')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme7">
+                    <audio id="audio_meme12">
                         <source src="{% static 'audio/memes/GoofySounds.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton12" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -134,14 +134,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Gulp</p>
-                    <button onclick="playSound('audio_meme8')">
+                    <button onclick="playSound('audio_meme13')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme8">
+                    <audio id="audio_meme13">
                         <source src="{% static 'audio/memes/Gulp.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton13" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -151,14 +151,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Vine Boom</p>
-                    <button onclick="playSound('audio_meme9')">
+                    <button onclick="playSound('audio_meme14')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme9">
+                    <audio id="audio_meme14">
                         <source src="{% static 'audio/memes/VineBoom.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton14" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -168,14 +168,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>What The Hell</p>
-                    <button onclick="playSound('audio_meme10')">
+                    <button onclick="playSound('audio_meme15')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme10">
+                    <audio id="audio_meme15">
                         <source src="{% static 'audio/memes/WhatTheHell.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton15" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -185,14 +185,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>What The Sigma</p>
-                    <button onclick="playSound('audio_meme11')">
+                    <button onclick="playSound('audio_meme16')">
                         <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton MemeButton"/>
                     </button>
-                    <audio id="audio_meme11">
+                    <audio id="audio_meme16">
                         <source src="{% static 'audio/memes/WhatTheSigma.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton16" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -209,14 +209,14 @@
             <div style="display:flex; flex-wrap:wrap;">
                 <div class="ButtonClass">
                     <p>Android</p>
-                    <button onclick="playSound('audio_ringtone1')">
+                    <button onclick="playSound('audio_ringtone17')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone1">
+                    <audio id="audio_ringtone17">
                         <source src="{% static 'audio/ringtones/Android.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton17" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -226,14 +226,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Baby Laugh</p>
-                    <button onclick="playSound('audio_ringtone2')">
+                    <button onclick="playSound('audio_ringtone18')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone2">
+                    <audio id="audio_ringtone18">
                         <source src="{% static 'audio/ringtones/BabyLaugh.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton18" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -243,14 +243,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>John Cena</p>
-                    <button onclick="playSound('audio_ringtone3')">
+                    <button onclick="playSound('audio_ringtone19')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone3">
+                    <audio id="audio_ringtone19">
                         <source src="{% static 'audio/ringtones/JohnCena.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton19" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -260,14 +260,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Mario Death</p>
-                    <button onclick="playSound('audio_ringtone4')">
+                    <button onclick="playSound('audio_ringtone20')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone4">
+                    <audio id="audio_ringtone20">
                         <source src="{% static 'audio/ringtones/MarioDeath.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton20" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -277,14 +277,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Meep Meep</p>
-                    <button onclick="playSound('audio_ringtone5')">
+                    <button onclick="playSound('audio_ringtone21')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone5">
+                    <audio id="audio_ringtone21">
                         <source src="{% static 'audio/ringtones/MeepMeep.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton21" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -294,14 +294,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Nokia</p>
-                    <button onclick="playSound('audio_ringtone6')">
+                    <button onclick="playSound('audio_ringtone22')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone6">
+                    <audio id="audio_ringtone22">
                         <source src="{% static 'audio/ringtones/Nokia.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton22" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -311,14 +311,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Rum Diddly Dum</p>
-                    <button onclick="playSound('audio_ringtone7')">
+                    <button onclick="playSound('audio_ringtone23')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone7">
+                    <audio id="audio_ringtone23">
                         <source src="{% static 'audio/ringtones/RumDiddlyDum.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton23" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -328,14 +328,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Scooby Laugh</p>
-                    <button onclick="playSound('audio_ringtone8')">
+                    <button onclick="playSound('audio_ringtone24')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone8">
+                    <audio id="audio_ringtone24">
                         <source src="{% static 'audio/ringtones/ScoobyLaugh.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton24" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -345,14 +345,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Sui</p>
-                    <button onclick="playSound('audio_ringtone9')">
+                    <button onclick="playSound('audio_ringtone25')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone9">
+                    <audio id="audio_ringtone25">
                         <source src="{% static 'audio/ringtones/Sui.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton25" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -362,14 +362,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Why So Serious</p>
-                    <button onclick="playSound('audio_ringtone10')">
+                    <button onclick="playSound('audio_ringtone26')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone10">
+                    <audio id="audio_ringtone26">
                         <source src="{% static 'audio/ringtones/WhySoSerious.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton26" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -379,14 +379,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Windows XP</p>
-                    <button onclick="playSound('audio_ringtone11')">
+                    <button onclick="playSound('audio_ringtone27')">
                         <img src="{% static 'images/RingButton-removebg-preview.png' %}" alt="RingButton" class="SoundButton RingButton"/>
                     </button>
-                    <audio id="audio_ringtone11">
+                    <audio id="audio_ringtone27">
                         <source src="{% static 'audio/ringtones/WindowsXP.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton27" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -403,14 +403,14 @@
             <div style="display:flex; flex-wrap:wrap;">
                 <div class="ButtonClass">
                     <p>Ali A</p>
-                    <button onclick="playSound('audio_music1')">
+                    <button onclick="playSound('audio_music28')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music1">
+                    <audio id="audio_music28">
                         <source src="{% static 'audio/music/Ali_A.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton28" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -420,14 +420,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Apple Bottom Jeans</p>
-                    <button onclick="playSound('audio_music2')">
+                    <button onclick="playSound('audio_music29')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music2">
+                    <audio id="audio_music29">
                         <source src="{% static 'audio/music/AppleBottomJeans.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton29" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -437,14 +437,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Coffin Dance</p>
-                    <button onclick="playSound('audio_music3')">
+                    <button onclick="playSound('audio_music30')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music3">
+                    <audio id="audio_music30">
                         <source src="{% static 'audio/music/CoffinDance.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton30" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -454,14 +454,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Italian Brain Rot</p>
-                    <button onclick="playSound('audio_music4')">
+                    <button onclick="playSound('audio_music31')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music4">
+                    <audio id="audio_music31">
                         <source src="{% static 'audio/music/ItalianBrainRot.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton31" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -471,14 +471,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Kahoot</p>
-                    <button onclick="playSound('audio_music5')">
+                    <button onclick="playSound('audio_music32')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music5">
+                    <audio id="audio_music32">
                         <source src="{% static 'audio/music/Kahoot.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton32" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -488,14 +488,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Mi Me Ma Mo Mu</p>
-                    <button onclick="playSound('audio_music6')">
+                    <button onclick="playSound('audio_music33')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music6">
+                    <audio id="audio_music33">
                         <source src="{% static 'audio/music/MiMeMaMoMu.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton33" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -505,14 +505,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Never Back Down</p>
-                    <button onclick="playSound('audio_music7')">
+                    <button onclick="playSound('audio_music34')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music7">
+                    <audio id="audio_music34">
                         <source src="{% static 'audio/music/NeverBackDown.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton34" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -522,14 +522,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Rick Roll</p>
-                    <button onclick="playSound('audio_music8')">
+                    <button onclick="playSound('audio_music35')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music8">
+                    <audio id="audio_music35">
                         <source src="{% static 'audio/music/RickRoll.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton35" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -539,14 +539,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>Rizz</p>
-                    <button onclick="playSound('audio_music9')">
+                    <button onclick="playSound('audio_music36')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music9">
+                    <audio id="audio_music36">
                         <source src="{% static 'audio/music/Rizz.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton36" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -556,14 +556,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>We Bring The Boom</p>
-                    <button onclick="playSound('audio_music10')">
+                    <button onclick="playSound('audio_music37')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music10">
+                    <audio id="audio_music37">
                         <source src="{% static 'audio/music/WeBringTheBoom.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton37" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
@@ -573,14 +573,14 @@
                 </div>
                 <div class="ButtonClass">
                     <p>We Live We Love</p>
-                    <button onclick="playSound('audio_music11')">
+                    <button onclick="playSound('audio_music38')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="MusicButton" class="SoundButton MusicButton"/>
                     </button>
-                    <audio id="audio_music11">
+                    <audio id="audio_music38">
                         <source src="{% static 'audio/music/WeLiveWeLove.mp3' %}" type="audio/mpeg">
                     </audio>
                     <div class="DownloadLikeDiv">
-                        <button>
+                        <button id="DownloadButton38" onclick="downloadSong(this)">
                             <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                         </button>
                         <button onclick="toggleLike(this)">
