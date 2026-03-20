@@ -12,28 +12,39 @@ function changeImage(ButtonElement) {
         }
 }
 
-async function downloadSong(ButtonElement){
-   const clickedDownload = ButtonElement.getAttribute("data-name");
-     
-    const blob = new Blob([clickedDownload], { type: 'audio/mp3' });
+async function downloadSong(DownloadClicked) {
+    const IDNumber = DownloadClicked.id.replace('DownloadButton', '');
+    let audioID;
 
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = clickedDownload +'.mp3'; // Suggested filename
+    if(IDNumber >=1 && IDNumber <=5){
+         audioID = "audio" + IDNumber;
+    } else if(IDNumber >=6 && IDNumber <=16){
+         audioID = "audio_meme" + IDNumber
+    } else if(IDNumber >=17 && IDNumber <=27){
+         audioID = "audio_ringtone" + IDNumber
+    } else if(IDNumber >=28 && IDNumber <=38){
+         audioID = "audio_music" + IDNumber
+    }
 
-        // Append link, trigger click, then remove
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    const audioElement = document.getElementById(audioID);
+    const src = audioElement.querySelector("source").getAttribute("src");
 
-        // Release the object URL
-      try{
-        URL.revokeObjectURL(link.href);
-      } catch (error) {
-        console.error("Download failed:", error);
-      }
-};
+    const response = await fetch(src);
+    const blob = await response.blob();
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+
+    const filename = src.split('/').pop();
+    link.download = filename;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(link.href);
+}
+
 
 function addToFavourite(clickedImage){
     const IDNumber = clickedImage.replace('LikeButton', '')
@@ -42,15 +53,18 @@ function addToFavourite(clickedImage){
     
     audioName = document.getElementById(audioID)
     audioName = audioName.getAttribute("data-name");
-    audioFile = document.getElementById(audioID)
-    audioFile = audioFile.src
+    audioUser = document.getElementById(audioID)
+    audioUser = audioUser.getAttribute("data-user")
+    // alert(audioUser)
+    // audioFile = document.getElementById(audioID)
+    // audioFile = audioFile.src
 
     fetch("/home/save-fav/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({appuser:audioName, sound:audioFile})
+        body: JSON.stringify({appuser:audioUser, sound:audioName.soundFile})
     }).then(response => response.json()).then(data => {
         console.log("Server response: ", data)
     }).catch(error => console.error("Error: ", error));

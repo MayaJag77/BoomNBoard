@@ -317,6 +317,7 @@ class BoomNBoardTests (TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(str(messages[0]), "Invalid username or password. Try again.")
 
+
     # Tests for signup.html
 
     def test_signup_page_loads(self):
