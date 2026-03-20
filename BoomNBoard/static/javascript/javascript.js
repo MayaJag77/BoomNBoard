@@ -14,7 +14,17 @@ function changeImage(ButtonElement) {
 
 async function downloadSong(DownloadClicked) {
     const IDNumber = DownloadClicked.id.replace('DownloadButton', '');
-    const audioID = "audio" + IDNumber;
+    let audioID;
+
+    if(IDNumber >=1 && IDNumber <=5){
+         audioID = "audio" + IDNumber;
+    } else if(IDNumber >=6 && IDNumber <=16){
+         audioID = "audio_meme" + IDNumber
+    } else if(IDNumber >=17 && IDNumber <=27){
+         audioID = "audio_ringtone" + IDNumber
+    } else if(IDNumber >=28 && IDNumber <=38){
+         audioID = "audio_music" + IDNumber
+    }
 
     const audioElement = document.getElementById(audioID);
     const src = audioElement.querySelector("source").getAttribute("src");
