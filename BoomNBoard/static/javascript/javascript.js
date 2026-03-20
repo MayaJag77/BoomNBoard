@@ -50,21 +50,19 @@ function addToFavourite(clickedImage){
     const IDNumber = clickedImage.replace('LikeButton', '')
 
     const audioID = "audio" + IDNumber
+    const userID = window.UserID;
+
     
     audioName = document.getElementById(audioID)
     audioName = audioName.getAttribute("data-name");
-    audioUser = document.getElementById(audioID)
-    audioUser = audioUser.getAttribute("data-user")
-    // alert(audioUser)
-    // audioFile = document.getElementById(audioID)
-    // audioFile = audioFile.src
 
     fetch("/home/save-fav/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({appuser:audioUser, sound:audioName.soundFile})
+        body: JSON.stringify({sound_id: IDNumber, user_id: userID ,})
+
     }).then(response => response.json()).then(data => {
         console.log("Server response: ", data)
     }).catch(error => console.error("Error: ", error));

@@ -30,9 +30,12 @@
                 {% for sound in UploadedSounds %}
                 <div class="ButtonClass">
                     <p>#{{ forloop.counter }}</p>
-                    <button>
+                    <button onclick="playSound('audio_uploaded{{ forloop.counter }}')">
                         <img src="{% static 'images/MusicButton-removebg-preview.png' %}" alt="SoundButton" class="SoundButton" height="300em" width="300em"/>
                     </button>
+                     <audio id="audio_uploaded{{ forloop.counter }}">
+                        <source src="media/{{ sound.soundFile }}" type="audio/mpeg">
+                    </audio>
                     <br>
                 </div>
                 {% endfor %}
@@ -87,5 +90,6 @@
     <script>
         const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
         const WhiteHeart = "{% static 'images/LikeButtonWhite.jpg' %}";
+        window.UserID = "{{ request.user.id }}";
     </script>
 {% endblock %}

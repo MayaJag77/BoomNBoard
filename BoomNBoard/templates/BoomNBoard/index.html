@@ -25,7 +25,7 @@
                 <button onclick="playSound('audio1')">
                     <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"/>
                 </button>
-                <audio id="audio1" data-name="{{ TrendingSounds.0.name }}" data-user="{{ TrendingSounds.0.uploadedBy }}">
+                <audio id="audio1">
                     <source src="{% static 'audio/drums.mp3' %}" type="audio/mpeg">
                 </audio>
                 <div class="DownloadLikeDiv">
@@ -117,6 +117,7 @@
          <script>
         const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
         const WhiteHeart = "{% static 'images/LikeButtonWhite.jpg' %}";
+        window.UserID = "{{ request.user.id }}";
     </script>
 
 {% endblock %}
