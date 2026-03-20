@@ -15,7 +15,6 @@
     justify-content: center;
 }
 
-
 #MemesDiv h2 {
     color: red;
     font-style: italic;
@@ -33,4 +32,11 @@
     font-style: italic;
     text-align: left;
     font-size: 60px;
+}
+
+.ButtonClass p {
+    font-size: 35px;
+    margin: 0;
+    margin-bottom: 15px;
+    text-align: center;
 }
