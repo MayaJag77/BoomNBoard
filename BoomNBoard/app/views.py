@@ -75,12 +75,13 @@ def myaccount(request):
         form = SoundUploadForm()
 
     uploaded_sounds = Sound.objects.filter(uploadedBy=request.user)
-    favourite_sounds = SavedSound.objects.filter(appuser=request.user)
+    saved = request.user.saved_sounds.all()
+
 
     context_dict = {
         'form': form,
         'UploadedSounds': uploaded_sounds,
-        'FavouriteSounds': favourite_sounds,
+        'FavouriteSounds': saved,
     }
     return render(request, 'BoomNBoard/myaccount.html', context=context_dict)
 
@@ -93,17 +94,25 @@ def save_fav(request):
     if request.method == "POST":
         try:
             data = json.loads(request.body)
-            appuser = data.get("appuser")
-            sound = data.get("sound")
 
-            if not(appuser and sound):
-                return JsonResponse({"error": "Song name and mp3 are required"}, status=400)
-            
-            song = SavedSound.objects.create(appuser=appuser, sound=sound)
-            return JsonResponse({"message": "Song saved"})
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON"}, status=400)
-    return JsonResponse({"Error": "Invalid request method"}, status=405)
+            user_id = data.get("user_id")
+            sound_id = data.get("sound_id")
+
+            if not user_id or not sound_id:
+                return JsonResponse({"error": "Missing user_id or sound_id"}, status=400)
+
+            user = AppUser.objects.get(id=user_id)
+            sound = Sound.objects.get(soundID=sound_id)
+
+            SavedSound.objects.get_or_create(appuser=user, sound=sound)
+
+            return JsonResponse({"message": "Sound saved"})
+        
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
 
 def categories(request): 
     return render(request, 'BoomNBoard/categories.html')
