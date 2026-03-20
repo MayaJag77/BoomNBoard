@@ -13,47 +13,18 @@
         {% endif %}</h1>
     <br>
     
-   {% if user.is_authenticated %}
-    <button class="UploadSoundButton" onclick="document.getElementById('uploadForm').style.display='block'; this.style.display='none';">Upload Sound</button>
-
-        <form method="POST" enctype="multipart/form-data" id="uploadForm" style="display:none;">
-        {% csrf_token %}
-        <table style="width:100%; border-spacing: 0 10px;">
-            <tr>
-                <td><label style="font-weight:bold;">Name:</label></td>
-                <td><input type="text" name="name" style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;"></td>
-            </tr>
-            <tr>
-                <td><label style="font-weight:bold;">Sound File:</label></td>
-                    <td>
-                        <input type="file" name="soundFile" accept=".mp3" style="width:100%; padding:10px; font-size:1.5rem;">
-                </td>
-            </tr>
-            <tr>
-                <td><label style="font-weight:bold;">Category:</label></td>
-                <td>
-                    <select name="category" style="width:100%; padding:12px; border:2px solid #ccc; border-radius:4px; font-size:1.5rem; background-color:white;">
-                        <option value="">-- Select Category --</option>
-                        <option value="meme">Meme</option>
-                        <option value="ringtone">Ringtone</option>
-                        <option value="music">Music</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label style="font-weight:bold;">Description:</label></td>
-                <td><textarea name="description" style="width:100%; padding:10px; border:2px solid #ccc; border-radius:4px; font-size:1.5rem;"></textarea></td>
-            </tr>
-        </table>
-        <div style="margin-top:10px;">
-            <button type="submit" class="UploadSoundButton">Submit</button>
-            <button type="button" style="margin-left:10px;" onclick="document.getElementById('uploadForm').style.display='none'; document.getElementById('showFormBtn').style.display='inline-block';">Cancel</button>
-        </div>
-    </form>
+    {% if user.is_authenticated %}
+    <a class="UploadSoundButton" href="#" onclick="document.getElementById('mp3upload').click(); return false;">
+        <p>Upload Sound as MP3</p>
+    </a>
+    <input type="file" id="mp3upload" accept=".mp3" style="display:none;">
+    {% else %}
+        <p>Log in to an account to upload sounds!</p>
+    {% endif %}
     <br>
 
-        <div id="YourSoundsDiv" style="background-color: lightgray; height:20em;">
-            <u><h2 style="text-align: left;">Your Uploaded Sounds</h2></u>
+        <div id="YourSoundsDiv" style="background-color: lightgray; height:30em;">
+            <u><h2 style="text-align: left; font-family: Arial, Helvetica, sans-serif; font-size:30px;" >Your Uploaded Sounds</h2></u>
             {% if UploadedSounds %}
             <div style="display:flex;">
                 {% for sound in UploadedSounds %}
@@ -113,7 +84,6 @@
            {% endif %}
         </div>
 
-    {% endif %}
     <script>
         const RedHeart = "{% static 'images/LikeButtonRed.jpg' %}";
         const WhiteHeart = "{% static 'images/LikeButtonWhite.jpg' %}";

@@ -345,7 +345,7 @@ button{
     border-width: 10px;
     border-color: black;
     background-color: gray;
-    height: 5em;
+    height: 8em;
     width: 95%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
@@ -359,6 +359,10 @@ button{
     margin-right:8%; 
     flex-direction: row;
     gap: 13%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 1.5%;
 }
 
 .FavouriteDownloadLikeDiv{
