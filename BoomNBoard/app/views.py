@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from app.forms import SoundUploadForm
 import json
 
 def index(request):
@@ -56,14 +57,32 @@ def signup(request):
 def help(request):
     return render(request, 'BoomNBoard/help.html')
 
-def myaccount(request): 
+@login_required
+def myaccount(request):
+    if not request.user.is_authenticated:
+        return redirect('app:login')
+    if request.method == 'POST':
+        form = SoundUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            sound = form.save(commit=False)
+            sound.uploadedBy = request.user
+            sound.save()
+            messages.success(request, "Sound uploaded successfully!")
+            return redirect('app:myaccount')
+        else:
+            messages.error(request, "Upload failed. Please check the form.")
+    else:
+        form = SoundUploadForm()
 
-    favouriteSoundsList = SavedSound.objects.all()
+    uploaded_sounds = Sound.objects.filter(uploadedBy=request.user)
+    favourite_sounds = SavedSound.objects.filter(appuser=request.user)
 
-    context_dict = {}
-    context_dict["FavouriteSounds"] = favouriteSoundsList
-
-    return render(request, 'BoomNBoard/myaccount.html', context = context_dict)
+    context_dict = {
+        'form': form,
+        'UploadedSounds': uploaded_sounds,
+        'FavouriteSounds': favourite_sounds,
+    }
+    return render(request, 'BoomNBoard/myaccount.html', context=context_dict)
 
 # @login_required
 # def restricted(request):
