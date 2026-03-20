@@ -96,16 +96,14 @@ def loginUser(request):
 
         user = authenticate(username=username, password=password)
 
-        if user:
-            if user.is_active:
-                login(request, user)
-                return redirect(reverse('app:myaccount'))
-        else:
-            print(f"Invalid username or password {username}, {password}")
-            messages.error(request, "Invalid username or password. Try again.")
-            return redirect('app:login')
-    else:
-        return render(request, 'BoomNBoard/login.html')
+        if user and user.is_active:
+            login(request, user)
+            return redirect('app:myaccount')
+
+        messages.error(request, "Invalid username or password. Try again.")
+        return redirect('app:login')
+
+    return render(request, 'BoomNBoard/login.html')
 
 @login_required
 def user_logout(request):

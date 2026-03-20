@@ -3,22 +3,6 @@ body{
     padding-top: 3%;
 }
 
-/* .navbar{
-    display: flex;
-    border-style: solid;
-    border-width: 10px;
-    border-color: black;
-    padding: 1%;
-    margin: 2 auto;
-    width: 95%;
-    height: 12%;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background-color: white;
-} */
-
 .navbar {
     display: flex;
     align-items: center;
@@ -35,27 +19,15 @@ body{
 .ringtone { background-color: rgb(23, 78, 240); }
 .music { background-color: rgb(6, 156, 6); }
 
-/* .links{
-    display: flex;
-    list-style-type: none;
-    margin-right: 52%;
-    padding: 0;
-} */
-
 .links {
     display: flex;
-    list-style: none;
+    list-style-type: none;
     gap: 40px;
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-/* .LinkItem{
-    margin: 0 12%;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 40px;
-} */
 
 .LinkItem {
     font-size: 2rem;
@@ -81,7 +53,7 @@ body{
     height: auto;
 }
 
-#AboutTextDiv, #TrendingSoundsDiv{
+#AboutTextDiv{
     margin-top: 2%;
     border-style: solid;
     border-width: 10px;
@@ -95,13 +67,11 @@ body{
     padding:2%;
 }
 
-.ButtonClass{
-    display:flex;
+.ButtonClass {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top:1.5%;
-    text-align: left;
-    margin-right:2%;
+    text-align: center;
 }
 
 button{
@@ -111,32 +81,40 @@ button{
 }
 
 .SoundButton {
-    width: 300px;
-    height: 300px;
-    transition: transform 0.1s ease;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
 }
 
 .SoundButton:hover {
     transform: scale(1.08);
 }
 
-.DownloadLikeDiv button img {
-    width: 80px;
-    height: 80px;
+.DownloadLikeDiv {
+    margin-left: 2%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
 }
 
-.DownloadLikeDiv{
-    margin-left: 4%; 
-    margin-right:8%; 
-    display:flex;
+.DownloadLikeDiv button {
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-.TrendingSoundNamesClass{
-    display:flex;
-    margin-left: 7%; 
-    margin-right:8%; 
-    flex-direction: row;
-    gap: 13%;
+.DownloadLikeDiv img {
+    width: 35px;
+    height: auto;
+}
+
+.soundsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    padding: 20px;
 }
 
 .footer {
@@ -150,6 +128,17 @@ button{
     font-family: Arial, Helvetica, sans-serif;
     border-top: 1px solid #ccc;
     margin-top: 20px;
+}
+
+#TrendingSoundsDiv {
+    background-color: lightgray;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 10px solid black;
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    height: auto;
 }
 
 /* Login Page CSS */

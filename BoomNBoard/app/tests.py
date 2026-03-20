@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.conf import settings
 from .models import Sound, AppUser, SavedSound
+from django.contrib.messages import get_messages
 
 
 FAILURE_HEADER = "==================== TEST FAILURE OCCURRED ================================"
@@ -274,22 +275,47 @@ class BoomNBoardTests (TestCase):
         self.assertIn("MusicButton-removebg-preview.png", html)
 
 
+    # Tests for login.html
 
-        
-        
+    def test_successful_login(self):
+        """A user should be able to log in"""
+        AppUser.objects.create_user(
+            username='existinguser',
+            email='existing@example.com',
+            password='testpass123'
+        )
+        response = self.client.post(reverse('app:login'), {
+            'username': 'existinguser',
+            'password': 'testpass123',
+        })
+        self.assertRedirects(response, reverse('app:myaccount'))
+        self.assertTrue(response.wsgi_request.user.is_authenticated)
 
+    def test_invalid_login(self):
+        """User should not be able to log in with invalid details"""
+        response = self.client.post(reverse('app:login'), {
+        'username': 'wrong',
+        'password': 'wrongpass',
+        })
+        self.assertRedirects(response, reverse('app:login'))
 
-
-        
-
-
-
+    def test_empty_field_login(self):
+        """User should not be able to log in with empty fields"""
+        response = self.client.post(reverse('app:login'), {
+        'username': '',
+        'password': '',
+        })
+        self.assertRedirects(response, reverse('app:login'))
     
-
-
-
-
-    # Tests for signup.html
+    def test_error_message_appears(self):
+        """An error message should appear if a user provides invalid details"""
+        response = self.client.post(reverse('app:login'), {
+        'username': 'wrong',
+        'password': 'wrongpass',
+        }, follow=True)
+        
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]), "Invalid username or password. Try again.")
 
     # Tests for signup.html
 
