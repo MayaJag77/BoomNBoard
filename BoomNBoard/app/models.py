@@ -8,8 +8,8 @@ class AppUser(AbstractUser):
 class Sound(models.Model):
     savedSound = models.ManyToManyField(AppUser,through='SavedSound', related_name="saved_sounds")
     uploadedBy = models.ForeignKey(AppUser, on_delete=models.CASCADE, related_name="uploaded_sounds")
-    soundID = models.CharField(primary_key=True, max_length=5, unique=True)
-    soundFile = models.URLField()
+    soundID = models.AutoField(primary_key=True)
+    soundFile = models.FileField(upload_to='audio/')
     name = models.CharField(max_length=40)
     category = models.CharField(default=0, max_length=15)
     description = models.CharField(max_length=500, blank=True)
