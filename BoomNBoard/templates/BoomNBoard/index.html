@@ -25,11 +25,11 @@
                 <button onclick="playSound('audio1')">
                     <img src="{% static 'images/MemeButton-removebg-preview.png' %}" alt="MemeButton" class="SoundButton"/>
                 </button>
-                <audio id="audio1" data-name="{{ TrendingSounds.0.name }}">
+                <audio id="audio1" data-name="{{ TrendingSounds.0.name }}" data-user="{{ TrendingSounds.0.uploadedBy }}">
                     <source src="{% static 'audio/drums.mp3' %}" type="audio/mpeg">
                 </audio>
                 <div class="DownloadLikeDiv">
-                    <button id="DownloadButton1" onclick="downloadSong(this)" data-name="{{ TrendingSounds.0.soundFile }}">
+                    <button id="DownloadButton1" onclick="downloadSong(this)" >
                         <img src="{% static 'images/DownloadButton.jpg' %}" alt="Download">
                     </button>
                     <button id="LikeButton1" onclick="changeImage(this)">
