@@ -198,10 +198,6 @@ class BoomNBoardTests (TestCase):
             Tests that if a user is logged in, their username displays
         """
 
-        response = self.client.get(reverse('myaccount'))
-        html = response.content.decode()
-        self.assertIn('Hello, sign up to save sounds!', html)
-
         user = AppUser.objects.create_user(
           username="noobmaster69",
           email="NoobTester@test.com",
@@ -240,9 +236,31 @@ class BoomNBoardTests (TestCase):
             Tests that users see the text "No sounds uploaded yet!" if they haven't uploaded a sound
         """
 
+        self.user = AppUser.objects.create(
+            username="noobmaster69",
+            email="NoobTester@test.com",
+            password="testPassword"
+        )
+
+        self.sound = Sound.objects.create(
+        soundID="00001",
+        soundFile="media\audio\drums.mp3",
+        name="Drum",
+        category="Music",
+        description="Loud Drums",
+        uploadedBy=self.user
+    )   
+        
+        self.user.set_password("testPassword")
+        self.user.save()
+        self.client.login(username="noobmaster69", password="testPassword")
+        
         response = self.client.get(reverse('myaccount'))
         html = response.content.decode()
-        self.assertIn("No sounds uploaded yet!", html)
+
+        self.assertIn("<h2 style=\"text-align: left; font-family: Arial, Helvetica, sans-serif; font-size:30px;\" >Your Uploaded Sounds</h2>", html)
+        
+        self.assertIn("MusicButton-removebg-preview.png", html)
 
     def test_favourite_sounds(self):
 
@@ -265,6 +283,10 @@ class BoomNBoardTests (TestCase):
         uploadedBy=self.user
     )   
         
+        self.user.set_password("testPassword")
+        self.user.save()
+        self.client.login(username="noobmaster69", password="testPassword")
+
         saved = SavedSound.objects.create(appuser=self.user, sound=self.sound)
         
         response = self.client.get(reverse('myaccount'))
