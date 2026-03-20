@@ -287,10 +287,6 @@ class BoomNBoardTests (TestCase):
     
 
 
-
-
-    # Tests for signup.html
-
     # Tests for signup.html
 
     def test_signup_page_loads(self):
